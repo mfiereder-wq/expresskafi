@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpressKafi - Tragbare Espressomaschine</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Die ExpressKafi 3-in-1 tragbare Espressomaschine. Geniessen Sie Barista-Qualität mit integrierter Heizfunktion, kompatibel mit Kapseln (Nespresso, Dolce Gusto) und Kaffeepulver. Perfekt für unterwegs und Zuhause.">
+    <!-- Aktualisierte Keywords für bessere Google-Sichtbarkeit -->
+    <meta name="keywords" content="tragbare Espressomaschine, tragbare Kaffeemaschine, mobiler Espresso, Espresso Maschine, Kaffeemaschine mit Kapseln, Reisekaffee, Kapselmaschine">
+
+    <!-- Favicon (Coffee Mug Emoji) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+
+    <!-- Schema Markup (JSON-LD) for Rich Snippets -->
+    <!-- Teilt Google direkt die Produktdaten mit (Preis, Bewertung, Verfügbarkeit) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "ExpressKafi 3-in-1 Tragbare Espressomaschine",
+      "description": "Die ExpressKafi 3-in-1 tragbare Espressomaschine mit integrierter Heizfunktion, kompatibel mit Nespresso, Dolce Gusto und Kaffeepulver. Ideal für Reisen, Büro und Outdoor. Die beste tragbare Kaffeemaschine.",
+      "sku": "EK-P-001",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://buy.stripe.com/5kQ7sKeJh6pC6hW3Q93ks01",
+        "priceCurrency": "CHF",
+        "price": "129.00",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "5000"
+      },
+      "image": "https://ae01.alicdn.com/kf/Scd9c77433c594eeba5ddd2cb30881c210.jpg"
+    }
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'coffee-dark': '#3E2723',
+                        'coffee-medium': '#6F4E37',
+                        'coffee-light': '#A1887F',
+                        'coffee-cream': '#F5EFE6',
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #6F4E37 0%, #3E2723 100%);
+        }
+
+        .btn-primary {
+            background-color: #6F4E37;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #5a3d2b;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #6F4E37;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .faq-question .faq-icon {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease;
+            padding: 0 1rem;
+        }
+
+        /* Animations for scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-coffee-cream">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/80 backdrop-blur-lg shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 lg:px-6 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#" id="logo-link" class="text-2xl font-bold text-coffee-dark flex items-center">
+                    <i class="fas fa-mug-hot mr-2 text-coffee-medium"></i>
+                    ExpressKafi
+                </a>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="nav-link text-gray-700 hover:text-coffee-medium font-medium">Features</a>
+                    <a href="#gallery" class="nav-link text-gray-700 hover:text-coffee-medium font-medium">Galerie</a>
+                    <a href="#how-it-works" class="nav-link text-gray-700 hover:text-coffee-medium font-medium">Anleitung</a>
+                    <a href="#testimonials" class="nav-link text-gray-700 hover:text-coffee-medium font-medium">Kundenstimmen</a>
+                    <a href="#faq" class="nav-link text-gray-700 hover:text-coffee-medium font-medium">FAQ</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <a href="https://buy.stripe.com/5kQ7sKeJh6pC6hW3Q93ks01" target="_blank" class="hidden md:block btn-primary text-white px-6 py-2 rounded-full font-semibold shadow-sm">
+                        Jetzt bestellen
+                    </a>
+                    <button id="mobile-menu-button" class="md:hidden text-coffee-dark text-2xl z-50">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-0 left-0 w-full h-screen bg-white">
+            <div class="flex flex-col items-center justify-center h-full space-y-8 text-xl">
+                <a href="#features" class="mobile-nav-link text-gray-700 hover:text-coffee-medium">Features</a>
+                <a href="#gallery" class="mobile-nav-link text-gray-700 hover:text-coffee-medium">Galerie</a>
+                <a href="#how-it-works" class="mobile-nav-link text-gray-700 hover:text-coffee-medium">Anleitung</a>
+                <a href="#testimonials" class="mobile-nav-link text-gray-700 hover:text-coffee-medium">Kundenstimmen</a>
+                <a href="#faq" class="mobile-nav-link text-gray-700 hover:text-coffee-medium">FAQ</a>
+                <a href="https://buy.stripe.com/5kQ7sKeJh6pC6hW3Q93ks01" target="_blank" class="mobile-nav-link btn-primary text-white px-8 py-3 rounded-full font-semibold mt-4">
+                    Jetzt bestellen
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- PRODUCT SECTIONS (Always Visible) -->
+        <div id="main-product-sections">
+            <!-- Hero Section -->
+            <section class="hero-gradient text-white pt-20 pb-24 overflow-hidden">
+                <div class="container mx-auto px-4">
+                    <div class="flex flex-col md:flex-row items-center gap-12">
+                        <div class="md:w-1/2 text-center md:text-left">
+                            <h1 class="text-4xl lg:text-5xl font-extrabold mb-4 leading-tight reveal">3-in-1 Tragbare Espressomaschine für unterwegs & Zuhause</h1>
+                            <p class="text-lg lg:text-xl mb-8 opacity-90 reveal" style="transition-delay: 100ms;">Geniesse perfekten Espresso, egal wo du bist. Mit integrierter Heizfunktion und Kompatibilität für Nespresso-, Dolce Gusto-Kapseln und Kaffeepulver.</p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start reveal" style="transition-delay: 200ms;">
+                                <a href="https://buy.stripe.com/5kQ7sKeJh6pC6hW3Q93ks01" target="_blank" class="btn-primary text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg">
+                                    Jetzt bestellen - 129.00 CHF
+                                </a>
+                                <a href="#how-it-works" class="bg-white/20 backdrop-blur-sm text-white px-8 py-3 rounded-full font-bold text-lg border border-white/50 transition hover:bg-white/30">
+                                    Video ansehen <i class="fas fa-play-circle ml-2"></i>
+                                </a>
+                            </div>
+                            <div class="mt-10 flex items-center justify-center md:justify-start reveal" style="transition-delay: 300ms;">
+                                <div class="flex -space-x-3">
+                                    <img src="https://placehold.co/40x40/E6A4B4/white?text=S" class="w-10 h-10 rounded-full border-2 border-white/50" alt="Kunde 1">
+                                    <img src="https://placehold.co/40x40/F3B664/white?text=M" class="w-10 h-10 rounded-full border-2 border-white/50" alt="Kunde 2">
+                                    <img src="https://placehold.co/40x40/944E63/white?text=L" class="w-10 h-10 rounded-full border-2 border-white/50" alt="Kunde 3">
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-sm font-semibold">Von 5.000+ Kaffeeliebhabern bewertet</p>
+                                    <div class="flex items-center text-yellow-400">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                        <span class="text-white ml-2 text-sm font-bold">4.9 / 5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 flex justify-center">
+                            <div class="relative reveal" style="transition-delay: 200ms;">
+                                <img src="https://ae01.alicdn.com/kf/Scd9c77433c594eeba5ddd2cb30881c210.jpg"
+                                    alt="ExpressKafi Tragbare Espressomaschine"
+                                    class="rounded-lg shadow-2xl w-full max-w-sm transform rotate-3 hover:rotate-0 hover:scale-105 transition-transform duration-500">
+                                <div class="absolute -bottom-5 -right-5 bg-white p-3 rounded-lg shadow-lg text-center">
+                                    <div class="text-coffee-dark font-bold text-xl">129.00 CHF</div>
+                                    <div class="text-xs text-gray-500">Zeitlich begrenztes Angebot</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section (Combined) -->
+            <section id="features" class="py-20 bg-white">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 reveal">Warum ExpressKafi herausragt</h2>
+                        <p class="text-gray-600 max-w-2xl mx-auto reveal" style="transition-delay: 100ms;">Erlebe Espresso in Barista-Qualität, perfekt für jedes Abenteuer.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                        <div class="feature-card text-center p-8 reveal">
+                            <div class="bg-coffee-medium/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5">
+                                <i class="fas fa-cubes text-3xl text-coffee-medium"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">3-in-1 Kompatibilität</h3>
+                            <p class="text-gray-600">Verwende Nespresso-Kapseln, Dolce Gusto-Kapseln oder dein eigenes Kaffeepulver.</p>
+                        </div>
+
+                        <div class="feature-card text-center p-8 reveal" style="transition-delay: 100ms;">
+                            <div class="bg-coffee-medium/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5">
+                                <i class="fas fa-plug text-3xl text-coffee-medium"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Integriertes Heizelement</h3>
+                            <p class="text-gray-600">Erhitzt kaltes Wasser in wenigen Minuten auf die perfekte Temperatur (220V Netzbetrieb).</p>
+                        </div>
+
+                        <div class="feature-card text-center p-8 reveal" style="transition-delay: 200ms;">
+                            <div class="bg-coffee-medium/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5">
+                                <i class="fas fa-rocket text-3xl text-coffee-medium"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">15-Bar-Druck</h3>
+                            <p class="text-gray-600">Das professionelle 15-Bar-Drucksystem extrahiert maximales Aroma und sorgt für eine perfekte Crema.</p>
+                        </div>
+
+                         <div class="feature-card text-center p-8 reveal" style="transition-delay: 300ms;">
+                            <div class="bg-coffee-medium/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5">
+                                <i class="fas fa-thermometer-half text-3xl text-coffee-medium"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Optimale Temperatur</h3>
+                            <p class="text-gray-600">Liefert Espresso konstant bei 92°C – der idealen Brühtemperatur für vollen Geschmack.</p>
+                        </div>
+
+                        <div class="feature-card text-center p-8 reveal" style="transition-delay: 400ms;">
+                            <div class="bg-coffee-medium/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5">
+                                <i class="fas fa-feather-alt text-3xl text-coffee-medium"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Kompakt & Leicht</h3>
+                            <p class="text-gray-600">Mit nur ca. 550g passt sie problemlos in Rucksack, Koffer oder die Bürotasche.</p>
+                        </div>
+
+                        <div class="feature-card text-center p-8 reveal" style="transition-delay: 500ms;">
+                            <div class="bg-coffee-medium/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5">
+                                <i class="fas fa-bolt text-3xl text-coffee-medium"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">60-Sekunden-Brühvorgang</h3>
+                            <p class="text-gray-600">Vom Start bis zum ersten Schluck in unter einer Minute – schnell und unkompliziert.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PRODUKT-GALERIE SEKTION -->
+            <section id="gallery" class="py-20 bg-coffee-cream">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 reveal">Detailansicht & Einsatz</h2>
+                        <p class="text-gray-600 max-w-2xl mx-auto reveal" style="transition-delay: 100ms;">Sehen Sie die ExpressKafi in Aktion und alle mitgelieferten Adapter.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Bild 1: Espresso fliesst -->
+                        <div class="relative rounded-xl overflow-hidden shadow-xl reveal gallery-image-container cursor-pointer" data-img-src="https://ae01.alicdn.com/kf/S363e2af4c2344d649a939933222906d0A.jpg">
+                            <img src="https://ae01.alicdn.com/kf/S363e2af4c2344d649a939933222906d0A.jpg"
+                                alt="ExpressKafi macht Espresso"
+                                class="w-full h-full object-cover transition duration-300 hover:scale-[1.03]">
+                            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                                <p class="text-white font-semibold text-lg">Profi-Crema dank 15 Bar</p>
+                            </div>
+                        </div>
+
+                        <!-- Bild 2: Zubehör / Adapter -->
+                        <div class="relative rounded-xl overflow-hidden shadow-xl reveal gallery-image-container cursor-pointer" style="transition-delay: 150ms;" data-img-src="https://ae01.alicdn.com/kf/Sfb6ec634f5b64decb99013b7aded6cd4b.jpg">
+                            <img src="https://ae01.alicdn.com/kf/Sfb6ec634f5b64decb99013b7aded6cd4b.jpg"
+                                alt="ExpressKafi Adapter für Nespresso Dolce Gusto und Pulver"
+                                class="w-full h-full object-cover transition duration-300 hover:scale-[1.03]">
+                            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                                <p class="text-white font-semibold text-lg">Das 3-in-1 Komplettset</p>
+                            </div>
+                        </div>
+
+                        <!-- Bild 3: Kompaktheit -->
+                        <div class="relative rounded-xl overflow-hidden shadow-xl reveal gallery-image-container cursor-pointer" style="transition-delay: 300ms;" data-img-src="https://ae01.alicdn.com/kf/S95c9f421653841ec913288461008b240S.jpg">
+                            <img src="https://ae01.alicdn.com/kf/S95c9f421653841ec913288461008b240S.jpg"
+                                alt="ExpressKafi tragbar in der Hand"
+                                class="w-full h-full object-cover transition duration-300 hover:scale-[1.03]">
+                            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                                <p class="text-white font-semibold text-lg">Passt in jede Tasche</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How It Works -->
+            <section id="how-it-works" class="py-20 bg-white">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 reveal">So einfach funktioniert's</h2>
+                        <p class="text-gray-600 max-w-2xl mx-auto reveal" style="transition-delay: 100ms;">Perfekten Espresso zuzubereiten war noch nie einfacher. Folge einfach diesen Schritten:</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 mb-16">
+                        <div class="text-center reveal">
+                            <div class="relative">
+                                <div class="bg-coffee-light/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-coffee-medium">
+                                    <span class="text-coffee-dark font-bold text-2xl">1</span>
+                                </div>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">Wasser einfüllen</h3>
+                            <p class="text-gray-600 text-sm">Fülle die Kammer mit Wasser.</p>
+                        </div>
+
+                        <div class="text-center reveal" style="transition-delay: 150ms;">
+                            <div class="bg-coffee-light/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-coffee-medium">
+                                <span class="text-coffee-dark font-bold text-2xl">2</span>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">Kaffee/Kapsel</h3>
+                            <p class="text-gray-600 text-sm">Fülle Kaffeepulver oder eine Kapsel in den Filter und schraube ihn fest.</p>
+                        </div>
+
+                        <div class="text-center reveal" style="transition-delay: 300ms;">
+                            <div class="bg-coffee-light/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-coffee-medium">
+                                <span class="text-coffee-dark font-bold text-2xl">3</span>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">Heizen & Pumpen</h3>
+                            <p class="text-gray-600 text-sm">Gerät anschliessen und warten, dann Pumpe 8-10 Mal, um Druck aufzubauen.</p>
+                        </div>
+
+                        <div class="text-center reveal" style="transition-delay: 450ms;">
+                            <div class="bg-coffee-light/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-coffee-medium">
+                                <span class="text-coffee-dark font-bold text-2xl">4</span>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">Geniessen!</h3>
+                            <p class="text-gray-600 text-sm">Perfekter Espresso in Profi-Qualität ist bereit. Geniesse!</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-16 reveal">
+                        <div class="relative w-full max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl group">
+                            <!-- Video Player -->
+                            <video controls class="w-full h-auto rounded-xl shadow-2xl"
+                                poster="https://ae01.alicdn.com/kf/S220766c3d44e4d8bac0b42b0fdb430abv.jpg"
+                                muted>
+                                <source src="https://video.aliexpress-media.com/play/u/ae_sg_item/3000004537111/p/1/e/6/t/10301/5000262116073.mp4?from=firefox&definition=h265" type="video/mp4">
+                                Dein Browser unterstützt das Video-Tag nicht.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section id="testimonials" class="py-20 bg-coffee-cream">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 reveal">Was unsere Kunden sagen</h2>
+                        <p class="text-gray-600 max-w-2xl mx-auto reveal" style="transition-delay: 100ms;">Verlasse dich nicht nur auf unser Wort - höre von Kaffeeliebhabern, die mit ExpressKafi ihren Morgen verändert haben.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-white rounded-lg p-6 shadow-md transform hover:-translate-y-2 transition-transform duration-300 reveal">
+                            <div class="flex items-center mb-4">
+                                <img src="https://placehold.co/48x48/E6A4B4/white?text=S" class="w-12 h-12 rounded-full mr-4" alt="Kundenportrait S. J.">
+                                <div>
+                                    <h4 class="font-bold">Sarah J.</h4>
+                                    <div class="text-yellow-400 text-sm">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 italic">"Als Vielreisende habe ich jede mobile Kaffeelösung ausprobiert. ExpressKafi ist die erste, die tatsächlich Espresso liefert, der mit meinem Lieblingscafé mithalten kann. Mein wichtigstes Reise-Accessoire!"</p>
+                        </div>
+
+                        <div class="bg-white rounded-lg p-6 shadow-md transform hover:-translate-y-2 transition-transform duration-300 reveal" style="transition-delay: 200ms;">
+                            <div class="flex items-center mb-4">
+                                <img src="https://placehold.co/48x48/F3B664/white?text=M" class="w-12 h-12 rounded-full mr-4" alt="Kundenportrait M. T.">
+                                <div>
+                                    <h4 class="font-bold">Michael T.</h4>
+                                    <div class="text-yellow-400 text-sm">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 italic">"Ich bin Backpacker und war skeptisch. Aber ExpressKafi ist so leicht und der Kaffee so gut, dass ich nie wieder ohne losziehe. Perfekt für kühle Morgen in der Natur."</p>
+                        </div>
+
+                        <div class="bg-white rounded-lg p-6 shadow-md transform hover:-translate-y-2 transition-transform duration-300 reveal" style="transition-delay: 400ms;">
+                            <div class="flex items-center mb-4">
+                                <img src="https://placehold.co/48x48/944E63/white?text=L" class="w-12 h-12 rounded-full mr-4" alt="Kundenportrait L. R.">
+                                <div>
+                                    <h4 class="font-bold">Lena R.</h4>
+                                    <div class="text-yellow-400 text-sm">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 italic">"Der Kaffee im Büro ist furchtbar. ExpressKafi hat sich in einem Monat bezahlt gemacht und ich bekomme besseren Kaffee als im Laden unten. Ein echter Game-Changer!"</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Order Section -->
+            <section id="order" class="py-20 bg-coffee-dark text-white">
+                <div class="container mx-auto px-4">
+                    <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 reveal">
+                        <div class="md:w-1/2">
+                            <img src="https://ae01.alicdn.com/kf/S9dee00ae9a6d493487509949fc386b34j.jpg"
+                            alt="ExpressKafi Produktset"
+                            class="rounded-lg shadow-lg w-full">
+                        </div>
+                        <div class="md:w-1/2">
+                            <h2 class="text-3xl font-bold mb-4 text-coffee-dark">Bereit für perfekten Espresso?</h2>
+                            <p class="text-gray-600 mb-6">Das komplette Set enthält alles, was du für den Start brauchst: die Maschine, Adapter für alle Kaffeesorten und das nötige 220V Netzteil.</p>
+                            <div class="text-4xl font-extrabold text-coffee-dark mb-6">
+                                129.00 CHF
+                                <span class="text-lg font-normal text-gray-500 line-through ml-2">299.00 CHF</span>
+                            </div>
+
+                            <div class="space-y-4 mb-8 text-coffee-dark">
+                                <div class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><p><strong>3-in-1 Adapter</strong> (Nespresso, Dolce Gusto & Pulver)</p></div>
+                                <div class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><p><strong>220V Netzteil</strong> für den Gebrauch an jeder Steckdose</p></div>
+                                <div class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><p><strong>2 Jahre Garantie</strong> & 30 Tage Rückgaberecht</p></div>
+                            </div>
+
+                            <a href="https://buy.stripe.com/5kQ7sKeJh6pC6hW3Q93ks01" target="_blank" class="w-full btn-primary text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg flex items-center justify-center">
+                            <i class="fas fa-shopping-cart mr-3"></i> In den Warenkorb
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- FAQ -->
+            <section id="faq" class="py-20 bg-coffee-cream">
+                <div class="container mx-auto px-4 max-w-3xl">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 reveal">Häufig gestellte Fragen</h2>
+                        <p class="text-gray-600 reveal" style="transition-delay: 100ms;">Alles, was du über die ExpressKafi wissen musst.</p>
+                    </div>
+
+                    <div class="space-y-4 reveal" style="transition-delay: 200ms;">
+                        <div class="faq-item border-b border-gray-200 pb-4">
+                            <button class="faq-question flex justify-between items-center w-full text-left font-semibold text-lg py-2">
+                                <span>Was ist im Lieferumfang enthalten?</span>
+                                <i class="fas fa-chevron-down faq-icon"></i>
+                            </button>
+                            <div class="faq-answer text-gray-600">
+                                <p class="pt-2">Jede ExpressKafi wird geliefert mit: der Espressomaschine, Adaptern für Nespresso-Kapseln, Dolce Gusto-Kapseln und Kaffeepulver, einem 220V Netzteil und einer Bedienungsanleitung.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item border-b border-gray-200 pb-4">
+                            <button class="faq-question flex justify-between items-center w-full text-left font-semibold text-lg py-2">
+                                <span>Kann die Maschine auch Wasser erhitzen?</span>
+                                <i class="fas fa-chevron-down faq-icon"></i>
+                            </button>
+                            <div class="faq-answer text-gray-600">
+                            <p class="pt-2">Ja, absolut! Die Maschine verfügt über ein integriertes 80W-Heizelement, das kaltes Wasser schnell auf die ideale Brühtemperatur bringt. Du benötigst keine separate heisse Wasserquelle, sondern nur eine normale Steckdose (220V).</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item border-b border-gray-200 pb-4">
+                            <button class="faq-question flex justify-between items-center w-full text-left font-semibold text-lg py-2">
+                                <span>Wie reinige ich die ExpressKafi?</span>
+                                <i class="fas fa-chevron-down faq-icon"></i>
+                            </button>
+                            <div class="faq-answer text-gray-600">
+                            <p class="pt-2">Die Reinigung ist einfach - nach jedem Gebrauch mit warmem Wasser abspülen. Die mitgelieferte Bürste hilft bei der Reinigung des Filterkorbs. Für eine gründlichere Reinigung sind alle Teile spülmaschinenfest (oberer Korb empfohlen).</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item border-b border-gray-200 pb-4">
+                            <button class="faq-question flex justify-between items-center w-full text-left font-semibold text-lg py-2">
+                                <span>Wie lauten eure Rückgabebedingungen?</span>
+                                <i class="fas fa-chevron-down faq-icon"></i>
+                            </button>
+                            <div class="faq-answer text-gray-600">
+                                <p class="pt-2">Wir bieten eine 30-tägige Geld-zurück-Garantie. Wenn du nicht vollständig zufrieden bist, sende deine ExpressKafi im Originalzustand für eine volle Rückerstattung zurück. Ausserdem gewähren wir eine 2-Jahres-Garantie auf Herstellungsfehler.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="hero-gradient text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="col-span-2 md:col-span-1">
+                    <h3 class="text-xl font-bold mb-4">ExpressKafi</h3>
+                    <p class="text-white/80">Profi-Espresso. Überall.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Unternehmen</h4>
+                    <ul class="space-y-2 text-white/80">
+                        <li><a href="#" class="hover:text-white">Über uns</a></li>
+                        <li><a href="#" class="hover:text-white">Karriere</a></li>
+                        <!-- IMPRESSUM mit neuem Link -->
+                        <li><a href="https://docs.google.com/document/d/1Wjl-yOG9sbBbsFQFOdKmiRGN4faPj5SgIqmWPgmPZ1Q/edit?tab=t.0" target="_blank" class="hover:text-white">Impressum</a></li>
+                        <!-- AGB mit neuem Link -->
+                        <li><a href="https://docs.google.com/document/d/1Wjl-yOG9sbBbsFQFOdKmiRGN4faPj5SgIqmWPgmPZ1Q/edit?usp=sharing" target="_blank" class="hover:text-white">AGB</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-white/80">
+                        <li><a href="#faq" class="hover:text-white">FAQ</a></li>
+                        <!-- KONTAKT-Link auf mailto: expresskafi@gmail.com aktualisiert -->
+                        <li><a href="mailto:expresskafi@gmail.com" class="hover:text-white">Kontakt</a></li>
+                        <li><a href="#" class="hover:text-white">Garantie</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Folge uns</h4>
+                    <div class="flex space-x-4 text-2xl">
+                        <a href="#" class="hover:text-white/70"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="hover:text-white/70"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="hover:text-white/70"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-white/20 pt-6 text-center text-sm text-white/60">
+                <p>&copy; 2025 ExpressKafi. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox / Modal for Image Enlargement -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0 pointer-events-none">
+        <div class="relative max-w-5xl max-h-full">
+            <!-- Close Button (X) -->
+            <button id="lightbox-close" class="absolute -top-10 right-0 md:-right-10 text-white text-4xl font-light hover:text-gray-300 transition z-10 focus:outline-none">
+                &times;
+            </button>
+            <img id="lightbox-image" src="" alt="Vergrösserte Ansicht" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl">
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Global Variables/IDs ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            const menuIcon = mobileMenuButton.querySelector('i');
+
+            // --- Lightbox Variables ---
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const galleryImageContainers = document.querySelectorAll('.gallery-image-container');
+
+            // --- Mobile Menu Logic ---
+            mobileMenuButton.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.toggle('hidden');
+                if (isOpen) {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                    document.body.style.overflow = '';
+                } else {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+
+            // Close menu when a link is clicked
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // --- FAQ Accordion Logic ---
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                const icon = question.querySelector('.faq-icon');
+
+                question.addEventListener('click', () => {
+                    const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+
+                    // Close all others and reset icons
+                    faqItems.forEach(otherItem => {
+                        const otherAnswer = otherItem.querySelector('.faq-answer');
+                        const otherIcon = otherItem.querySelector('.faq-icon');
+                        otherAnswer.style.maxHeight = '0';
+                        otherAnswer.style.padding = '0 1rem';
+                        otherIcon.style.transform = 'rotate(0deg)';
+                    });
+
+                    // Open this one if it wasn't open
+                    if (!isOpen) {
+                        // Set the height based on content + padding
+                        answer.style.maxHeight = answer.scrollHeight + 32 + 'px';
+                        answer.style.padding = '0.5rem 1rem 0.5rem 1rem';
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+
+            // --- Image Lightbox Logic ---
+
+            function closeLightbox() {
+                lightbox.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = ''; // Allow scrolling again
+            }
+
+            galleryImageContainers.forEach(container => {
+                const img = container.querySelector('img');
+
+                container.addEventListener('click', () => {
+                    const src = img.getAttribute('src');
+                    lightboxImage.setAttribute('src', src);
+                    lightbox.classList.remove('opacity-0', 'pointer-events-none');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+                });
+            });
+
+            // Close via X button
+            lightboxClose.addEventListener('click', closeLightbox);
+
+            // Close via clicking the overlay (but not the image itself)
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            // Close via ESC key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !lightbox.classList.contains('opacity-0')) {
+                    closeLightbox();
+                }
+            });
+
+            // --- Scroll Reveal Animation Logic ---
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
