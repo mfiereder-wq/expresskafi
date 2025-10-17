@@ -4,7 +4,50 @@
     <meta charset="UTF-8">
     <!-- WICHTIGSTE ANPASSUNG FÜR MOBILE: Der Viewport-Meta-Tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>ExpressKafi - Tragbare Espressomaschine</title>
+    <title>ExpressKafi - Tragbare 3-in-1 Espressomaschine (15 Bar, Heizfunktion)</title>
+    
+    <!-- FAVICON & METADATEN (Basis-SEO) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='1.2em' font-size='90'%3E%E2%98%95%3C/text%3E%3C/svg%3E">
+    <meta name="description" content="Geniesse perfekten 15-Bar-Espresso überall! Die ExpressKafi 3-in-1 Maschine ist tragbar, heizt Wasser und ist kompatibel mit Kapseln und Pulver. Kostenloser Versand.">
+    <link rel="canonical" href="https://ihre-domain.ch/expresskafi">
+    
+    <!-- NEU: ROBOTS TAG (Stellt sicher, dass Google die Seite crawlt und indexiert) -->
+    <meta name="robots" content="index, follow"> 
+
+    <!-- NEU: STRUCTURED DATA (JSON-LD Schema Markup)
+         Dies hilft Google, die Produktinformationen (Preis, Bewertung) direkt zu verstehen
+         und kann zu Rich Snippets in den Suchergebnissen führen. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "ExpressKafi - Tragbare 3-in-1 Espressomaschine",
+      "image": "https://ae01.alicdn.com/kf/Scd9c77433c594eeba5ddd2cb30881c210.jpg",
+      "description": "Geniesse perfekten 15-Bar-Espresso überall! Die ExpressKafi 3-in-1 Maschine ist tragbar, heizt Wasser und ist kompatibel mit Kapseln und Pulver. Ideal für Auto, Camping und Reisen.",
+      "sku": "EK-P-001",
+      "brand": {
+        "@type": "Brand",
+        "name": "ExpressKafi"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://buy.stripe.com/5kQ7sKeJh6pC6hW3Q93ks01",
+        "priceCurrency": "CHF",
+        "price": "129.00",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "ExpressKafi Vertrieb"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "5000"
+      }
+    }
+    </script>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -159,7 +202,7 @@
                         <!-- Responsive Text-Scaling -->
                         <h1 class="text-4xl lg:text-5xl font-extrabold mb-4 leading-tight reveal">3-in-1 Tragbare Espressomaschine für Auto & Zuhause</h1>
                         
-                        <!-- NEU: Optisch aufgewertetes Badge für Gratis Versand (Hervorgehoben auf Mobile) -->
+                        <!-- Optisch aufgewertetes Badge für Gratis Versand (Hervorgehoben auf Mobile) -->
                         <div class="bg-yellow-400 text-coffee-dark px-4 py-2 rounded-full font-bold text-lg mb-6 inline-flex items-center shadow-xl transform hover:scale-[1.02] transition-transform duration-300 reveal" style="transition-delay: 50ms;">
                             <i class="fas fa-truck-fast mr-2 text-xl"></i>
                             <span class="uppercase tracking-wider">Kostenloser Versand!</span>
@@ -178,9 +221,9 @@
                         </div>
                         <div class="mt-8 flex items-center justify-center md:justify-start reveal" style="transition-delay: 300ms;">
                             <div class="flex -space-x-3">
-                                <img src="https://placehold.co/40x40/E6A4B4/white?text=S" class="w-10 h-10 rounded-full border-2 border-white/50" alt="Kunde 1">
-                                <img src="https://placehold.co/40x40/F3B664/white?text=M" class="w-10 h-10 rounded-full border-2 border-white/50" alt="Kunde 2">
-                                <img src="https://placehold.co/40x40/944E63/white?text=L" class="w-10 h-10 rounded-full border-2 border-white/50" alt="Kunde 3">
+                                <img src="https://placehold.co/40x40/E6A4B4/white?text=S" class="w-10 h-10 rounded-full border-2 border-white/50" alt="Kunde 1 (Sarah J.)">
+                                <img src="https://placehold.co/40x40/F3B664/white?text=M" class="w-10 h-10 rounded-full border-2 border-white/50" alt="Kunde 2 (Michael T.)">
+                                <img src="https://placehold.co/40x40/944E63/white?text=L" class="w-10 h-10 rounded-full border-2 border-white/50" alt="Kunde 3 (Lena R.)">
                             </div>
                             <div class="ml-4">
                                 <p class="text-sm font-semibold">Von 5.000+ Kaffeeliebhabern bewertet</p>
@@ -195,7 +238,7 @@
                     <div class="md:w-1/2 flex justify-center mt-8 md:mt-0">
                         <div class="relative reveal" style="transition-delay: 200ms;">
                             <img src="https://ae01.alicdn.com/kf/Scd9c77433c594eeba5ddd2cb30881c210.jpg" 
-                                 alt="ExpressKafi Tragbare Espressomaschine" 
+                                 alt="ExpressKafi Tragbare Espressomaschine mit 15 Bar Druck" 
                                  class="rounded-lg shadow-2xl w-full max-w-sm transform rotate-3 hover:rotate-0 hover:scale-105 transition-transform duration-500">
                             <div class="absolute -bottom-5 -right-5 bg-white p-3 rounded-lg shadow-lg text-center hidden sm:block">
                                 <div class="text-coffee-dark font-bold text-xl">129.00 CHF</div>
@@ -338,7 +381,7 @@
                     <!-- Jede Testimonial-Karte ist mobil-freundlich und nimmt 100% Breite ein -->
                     <div class="bg-coffee-cream rounded-lg p-6 shadow-md transform hover:-translate-y-2 transition-transform duration-300 reveal">
                         <div class="flex items-center mb-4">
-                            <img src="https://placehold.co/48x48/E6A4B4/white?text=S" class="w-12 h-12 rounded-full mr-4" alt="Sarah J.">
+                            <img src="https://placehold.co/48x48/E6A4B4/white?text=S" class="w-12 h-12 rounded-full mr-4" alt="Kundenportrait Sarah J.">
                             <div>
                                 <h4 class="font-bold">Sarah J.</h4>
                                 <div class="text-yellow-400 text-sm">
@@ -351,7 +394,7 @@
                     
                     <div class="bg-coffee-cream rounded-lg p-6 shadow-md transform hover:-translate-y-2 transition-transform duration-300 reveal" style="transition-delay: 200ms;">
                         <div class="flex items-center mb-4">
-                            <img src="https://placehold.co/48x48/F3B664/white?text=M" class="w-12 h-12 rounded-full mr-4" alt="Michael T.">
+                            <img src="https://placehold.co/48x48/F3B664/white?text=M" class="w-12 h-12 rounded-full mr-4" alt="Kundenportrait Michael T.">
                             <div>
                                 <h4 class="font-bold">Michael T.</h4>
                                 <div class="text-yellow-400 text-sm">
@@ -364,7 +407,7 @@
                     
                     <div class="bg-coffee-cream rounded-lg p-6 shadow-md transform hover:-translate-y-2 transition-transform duration-300 reveal" style="transition-delay: 400ms;">
                         <div class="flex items-center mb-4">
-                            <img src="https://placehold.co/48x48/944E63/white?text=L" class="w-12 h-12 rounded-full mr-4" alt="Lena R.">
+                            <img src="https://placehold.co/48x48/944E63/white?text=L" class="w-12 h-12 rounded-full mr-4" alt="Kundenportrait Lena R.">
                             <div>
                                 <h4 class="font-bold">Lena R.</h4>
                                 <div class="text-yellow-400 text-sm">
@@ -384,7 +427,7 @@
                 <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 reveal">
                     <div class="md:w-1/2">
                          <img src="https://ae01.alicdn.com/kf/S220766c3d44e4d8bac0b42b0fdb430abv.jpg" 
-                         alt="ExpressKafi Komplettset" 
+                         alt="ExpressKafi Komplettset mit Adaptern und Netzteil" 
                          class="rounded-lg shadow-lg w-full">
                     </div>
                     <div class="md:w-1/2">
