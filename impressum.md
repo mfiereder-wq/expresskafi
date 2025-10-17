@@ -1,14 +1,15 @@
-Impressum (Gesetzliche Anbieterkennzeichnung)
+Impressum 
 
-Angaben gemäss § 5 TMG (Deutschland) bzw. entsprechend den Schweizerischen Bestimmungen (insbesondere Art. 3 Abs. 1 lit. s UWG):
+Angaben gemäss Art. 3 Abs. 1 lit. s UWG (Unlauter-Wettbewerbs-Gesetz):
 
 ExpressKafi Vertrieb
 
-Adresse: Nossikerstrasse 13, 8610 Uster, Schweiz
+Adresse:
+Nossikerstrasse 13, 8610 Uster, Schweiz
 
 Kontakt:
 
-Email: expresskafi@gmail.com
+E-Mail: expresskafi@gmail.com
 
 Haftungsausschluss
 
