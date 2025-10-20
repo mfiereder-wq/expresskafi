@@ -16,7 +16,7 @@
     
     <!-- Open Graph Tags für Social Media (WICHTIG!) -->
     <meta property="og:title" content="Black Friday: 40% Rabatt auf ExpressKafi Tragbare Espressomaschine">
-    <meta property="og:descriptiUpdate purchase URLs in index.htmlon" content="Der Black Friday Deal 2025 für Kaffee-Liebhaber ist da! Holen Sie sich ca. 40% Rabatt auf die ExpressKafi.">
+    <meta property="og:description" content="Der Black Friday Deal 2025 für Kaffee-Liebhaber ist da! Holen Sie sich ca. 40% Rabatt auf die ExpressKafi.">
     <meta property="og:type" content="product">
     <meta property="og:url" content="https://ihre-domain.ch/expresskafi-black-friday">
     
@@ -170,9 +170,32 @@
             opacity: 1;
             transform: translateY(0);
         }
+        
+        /* Cookie Banner Styles */
+        #cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 2000; /* Muss über allem anderen liegen */
+            display: none; /* Standardmässig versteckt, bis JS es anzeigt */
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            padding: 1rem;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5);
+            border-top: 3px solid #b91c1c; /* Deal Red Akzent */
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
     </style>
 </head>
 <body class="bg-main-dark">
+    <!-- Bild der ExpressKafi Kaffeemaschine mit Black Friday Deal Banner -->
+    
 
     <!-- Header (Vereinfacht für Mobile) -->
     <header class="bg-main-dark shadow-xl sticky top-0 z-50 border-b border-primary-brown">
@@ -429,7 +452,7 @@
                             <i class="fas fa-chevron-down faq-icon ml-4 text-deal-red"></i>
                         </button>
                         <div class="faq-answer">
-                            <p class="pb-4 text-gray-400">Ja, die ExpressKafi verfügt über eine leistungsstarke integrierte Heizfunktion, die kaltes Wasser auf Knopfdruck erhitzt. Das dauert ca. 8-10 Minuten, spart Ihnen aber ein externes Gerät.</p>
+                            <p class="pb-4 text-gray-400">Ja, die ExpressKafi verfügt über eine leistungsstarke integrierte Heizfunktion, die kaltes Wasser auf Knopfdruck erhitzt. Das dauert ca. 8-10 Minuten, erspart Ihnen aber ein externes Gerät.</p>
                         </div>
                     </div>
                     
@@ -460,6 +483,28 @@
         </section>
         
     </main>
+    
+    <!-- COOKIE BANNER HTML (NEU) -->
+    <div id="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="cookie-title" aria-describedby="cookie-description">
+        <div class="container mx-auto px-4 sm:flex sm:justify-between sm:items-center">
+            <div class="mb-4 sm:mb-0 max-w-xl">
+                <p id="cookie-title" class="font-bold text-lg mb-1">Wir verwenden Cookies</p>
+                <p id="cookie-description" class="text-sm text-gray-300">
+                    Für eine optimale Nutzererfahrung nutzen wir Cookies und nicht-essentielle Technologien. Dies hilft uns, die Leistung zu messen und die Seite zu verbessern. 
+                    Ihre Zustimmung ist freiwillig und jederzeit widerrufbar.
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
+                <button onclick="acceptCookies()" class="btn-cta px-5 py-2 rounded-lg font-bold text-sm uppercase transition duration-150">
+                    Alle akzeptieren
+                </button>
+                <button onclick="rejectCookies()" class="bg-primary-brown hover:bg-main-dark text-text-light border border-deal-red px-5 py-2 rounded-lg font-bold text-sm uppercase transition duration-150">
+                    Ablehnen
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- ENDE COOKIE BANNER -->
 
     <!-- STICKY CTA BAR (Mobile-optimiert & immer sichtbar) -->
     <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 bg-main-dark border-t-4 border-deal-red p-3 shadow-2xl">
@@ -484,7 +529,10 @@
                 EXPRESSKAFI FÜR CHF 79.00 KAUFEN
             </a>
             <p class="mt-8 text-sm opacity-80">
-                &copy; 2025 ExpressKafi. Alle Rechte vorbehalten. | <a href="#" class="hover:text-deal-red transition">Impressum</a> | <a href="#" class="hover:text-deal-red transition">Datenschutz</a>
+                &copy; 2025 ExpressKafi. Alle Rechte vorbehalten. | 
+                <a href="impressum.md" class="hover:text-deal-red transition">Impressum</a> | 
+                <a href="agb.md" class="hover:text-deal-red transition">AGB</a> |
+                <a href="datenschutz.md" class="hover:text-deal-red transition">Datenschutzerklärung</a> 
             </p>
         </div>
     </footer>
@@ -532,8 +580,7 @@
 
         // Countdown Timer Logic
         function startCountdown() {
-            // Setze das Zieldatum (z.B. Black Friday 2025: Letzter Freitag im November, 28.11.2025, um Mitternacht)
-            // HINWEIS: Da wir das aktuelle Jahr 2025 annehmen, ist der Black Friday der 28. November 2025.
+            // Setze das Zieldatum (Black Friday 2025: 28. November 2025, um 23:59:59 Uhr)
             const targetDate = new Date("November 28, 2025 23:59:59").getTime();
 
             const timer = setInterval(() => {
@@ -546,20 +593,71 @@
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+                const countdownElement = document.getElementById("countdown-timer");
+
                 // Aktualisiere die Elemente (mit Padding für 2 Ziffern)
-                document.getElementById("days").innerHTML = String(days).padStart(2, '0');
-                document.getElementById("hours").innerHTML = String(hours).padStart(2, '0');
-                document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
-                document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
+                if (countdownElement) {
+                    document.getElementById("days").innerHTML = String(days).padStart(2, '0');
+                    document.getElementById("hours").innerHTML = String(hours).padStart(2, '0');
+                    document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
+                    document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
+                }
+
 
                 // Wenn der Countdown abgelaufen ist
                 if (distance < 0) {
                     clearInterval(timer);
-                    document.getElementById("countdown-timer").innerHTML = '<p class="text-xl font-bold">DEAL ABGELAUFEN!</p>';
+                    if (countdownElement) {
+                        countdownElement.innerHTML = '<p class="text-xl font-bold">DEAL ABGELAUFEN!</p>';
+                    }
                 }
             }, 1000);
         }
 
+        // === COOKIE CONSENT LOGIK ===
+
+        // Funktion zum Anzeigen des Banners
+        function showCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            if (banner) {
+                banner.style.display = 'block';
+            }
+        }
+
+        // Funktion zum Überprüfen des Zustimmungsstatus
+        function checkConsent() {
+            // Nutzen Sie hier besser Firebase/Firestore, aber da Sie nur localStorage nutzen, bleibe ich dabei.
+            const consentStatus = localStorage.getItem('cookieConsent');
+            // Wenn der Status nicht gesetzt ist, zeige den Banner.
+            if (!consentStatus) {
+                showCookieBanner();
+            }
+        }
+
+        // Funktion zum Akzeptieren der Cookies
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            const banner = document.getElementById('cookie-banner');
+            if (banner) {
+                banner.style.display = 'none';
+            }
+            console.log("Cookies akzeptiert: Tracking und Analyse können gestartet werden.");
+        }
+
+        // Funktion zum Ablehnen der Cookies
+        function rejectCookies() {
+            localStorage.setItem('cookieConsent', 'rejected');
+            const banner = document.getElementById('cookie-banner');
+            if (banner) {
+                banner.style.display = 'none';
+            }
+            console.log("Cookies abgelehnt: Nur essentielle Cookies bleiben aktiv.");
+        }
+
+        // Mache die Funktionen global verfügbar, da sie im HTML verwendet werden
+        window.acceptCookies = acceptCookies;
+        window.rejectCookies = rejectCookies;
+        
         // Initiales Setup bei DOM-Load
         document.addEventListener('DOMContentLoaded', () => {
              // 1. FAQ-Antworten verstecken
@@ -572,6 +670,9 @@
 
             // 2. Countdown starten
             startCountdown();
+
+            // 3. Cookie-Zustimmung prüfen und ggf. Banner anzeigen
+            checkConsent();
         });
     </script>
 </body>
