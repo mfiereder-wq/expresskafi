@@ -16,7 +16,7 @@
     
     <!-- Open Graph Tags für Social Media (WICHTIG!) -->
     <meta property="og:title" content="Black Friday: 40% Rabatt auf ExpressKafi Tragbare Espressomaschine">
-    <meta property="og:description" content="Der Black Friday Deal 2025 für Kaffee-Liebhaber ist da! Holen Sie sich ca. 40% Rabatt auf die ExpressKafi.">
+    <meta property="og:descriptiUpdate purchase URLs in index.htmlon" content="Der Black Friday Deal 2025 für Kaffee-Liebhaber ist da! Holen Sie sich ca. 40% Rabatt auf die ExpressKafi.">
     <meta property="og:type" content="product">
     <meta property="og:url" content="https://ihre-domain.ch/expresskafi-black-friday">
     
@@ -76,7 +76,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- CUSTOM TAILWIND CONFIG (BLACK FRIDAY BRAUN-SCHWARZ) -->
     <script>
@@ -89,20 +89,20 @@
                         'accent-tan': '#b99c7b', // Helles Tan (Neutrale Akzente)
                         'text-light': '#f5f5f5', // Crème-Weißer Text
                         'deal-red': '#b91c1c', // Black Friday Deal Rot (Dominierende Deal-Farbe)
-                        'strikethrough-red': '#cc0000', // Dunkles Rot für den Streichpreis
+                        'deal-orange': '#ff5722', // Sekundäre Deal-Akzentfarbe
                     },
                     fontFamily: {
-                        'poppins': ['Poppins', 'sans-serif'],
+                        'sans': ['Inter', 'sans-serif'], // Auf Inter umgestellt
                     }
                 }
             }
         }
     </script>
     
-    <!-- CUSTOM STYLES -->
+    <!-- CUSTOM STYLES FÜR UX/CONVERSION -->
     <style>
         body {
-            font-family: 'poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: #1a1a1a;
             color: #f5f5f5;
         }
@@ -111,39 +111,25 @@
             background: linear-gradient(135deg, #1a1a1a 0%, #291c12 100%);
         }
         
-        .btn-primary {
-            background-color: '#4b3820'; 
-            color: '#f5f5f5';
+        /* Hervorgehobener, konversionsstarker Button */
+        .btn-cta {
+            background-color: #b91c1c; /* Deal Red */
+            color: white;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 15px rgba(185, 28, 28, 0.4);
         }
         
-        .btn-primary:hover {
-            background-color: '#3d2b1f';
-            opacity: 0.9;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+        .btn-cta:hover {
+            background-color: #991b1b; 
+            transform: translateY(-1px) scale(1.01);
+            box-shadow: 0 6px 20px rgba(185, 28, 28, 0.6);
         }
 
-        /* BLACK FRIDAY DEAL HIGHLIGHT STYLES */
-        .deal-badge-bf {
-            /* Black Friday Deal Badge - Black/Deep Red */
-            background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%); 
-            color: #b91c1c; /* Textfarbe Deep Red */
-            border: 2px solid #b91c1c;
-        }
-        
-        .bf-price {
-            /* Der prominente Deal-Preis */
-            font-weight: 800;
-            color: #b91c1c; /* Deep Red für aggressive Deal-Hervorhebung */
-        }
-        
         /* Stil für den Streichpreis */
         .strikethrough-deal {
             position: relative;
             display: inline-block;
-            color: #a0a0a0; 
+            color: #a0aa0a; 
         }
         .strikethrough-deal::before {
             content: "";
@@ -156,11 +142,28 @@
             transform: translateY(-50%) rotate(-1deg);
         }
         
-        /* Fade-in Animation */
+        /* Sticky CTA Bar */
+        #sticky-cta {
+            display: none; /* Default hidden, managed by JS/CSS for mobile */
+            z-index: 1000;
+        }
+
+        /* Mobile CTA Bar - Nur sichtbar auf kleinen Bildschirmen */
+        @media (max-width: 767px) {
+            #sticky-cta {
+                display: block; 
+            }
+            body {
+                /* Zusätzlicher Padding am Boden, damit der Inhalt nicht vom Sticky CTA verdeckt wird */
+                padding-bottom: 5rem;
+            }
+        }
+        
+        /* Animation (beibehalten für sanfte Übergänge) */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(15px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .reveal.visible {
@@ -171,229 +174,216 @@
 </head>
 <body class="bg-main-dark">
 
-    <!-- Header (Dunkelbraun) -->
+    <!-- Header (Vereinfacht für Mobile) -->
     <header class="bg-main-dark shadow-xl sticky top-0 z-50 border-b border-primary-brown">
         <nav class="container mx-auto px-4 lg:px-6 py-4">
             <div class="flex justify-between items-center">
-                <a href="#" class="text-2xl font-bold text-text-light flex items-center tracking-wide">
-                    <i class="fas fa-mug-hot mr-2 text-accent-tan"></i>
+                <a href="#" class="text-2xl font-extrabold text-text-light flex items-center tracking-wide">
+                    <i class="fas fa-mug-hot mr-2 text-deal-red"></i>
                     ExpressKafi
                 </a>
                 
-                <!-- NAVIGATION UND BESTELL-BUTTON -->
-                <div class="flex items-center space-x-4">
-                    
-                    <div class="hidden md:flex relative group">
-                        <button class="text-text-light px-4 py-2 font-semibold hover:text-accent-tan transition duration-150 flex items-center" id="dropdown-btn">
-                            Informationen
-                            <i class="fas fa-angle-down ml-2 text-sm transition-transform duration-300 group-hover:rotate-180"></i>
-                        </button>
-                        
-                        <!-- Dropdown Inhalt -->
-                        <div class="absolute top-full right-0 mt-2 w-48 bg-primary-brown border border-accent-tan/50 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform scale-95 group-hover:scale-100 origin-top-right">
-                            <a href="#features" class="block px-4 py-2 text-sm text-text-light hover:bg-main-dark rounded-t-lg">
-                                <i class="fas fa-list-check mr-2"></i> Features
-                            </a>
-                            <a href="#how-it-works" class="block px-4 py-2 text-sm text-text-light hover:bg-main-dark">
-                                <i class="fas fa-circle-info mr-2"></i> Funktionsweise
-                            </a>
-                            <a href="#faq" class="block px-4 py-2 text-sm text-text-light hover:bg-main-dark rounded-b-lg">
-                                <i class="fas fa-question-circle mr-2"></i> FAQ
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <a href="https://buy.stripe.com/28E28q0SraFSdKocmF3ks02" class="btn-primary px-6 py-2 rounded-lg font-bold text-lg shadow-md">
-                        DEAL SICHERN
-                    </a>
-                </div>
+                <!-- CTA im Desktop Header -->
+                <a href="https://buy.stripe.com/28E28q0SraFSdKocmF3ks02" class="hidden md:inline-block btn-cta px-6 py-2 rounded-lg font-bold text-lg shadow-md uppercase">
+                    DEAL SICHERN CHF 79.00
+                </a>
             </div>
         </nav>
     </header>
 
     <main>
-        <!-- Hero Section mit BLACK FRIDAY Deal FOKUS -->
-        <section class="hero-section text-text-light pt-16 pb-20 sm:pt-20 sm:pb-24 overflow-hidden">
+        <!-- Hero Section mit BLACK FRIDAY Deal FOKUS & Countdown -->
+        <section class="hero-section text-text-light pt-10 pb-16 sm:pt-16 sm:pb-20 overflow-hidden">
             <div class="container mx-auto px-4">
-                <div class="flex flex-col md:flex-row items-center gap-12">
-                    <div class="md:w-1/2 text-center md:text-left">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="md:w-1/2 text-center md:text-left order-2 md:order-1">
                         
-                        <!-- H1 - NUR EINMAL VERWENDET - WICHTIG FÜR SEO -->
-                        <h1 class="text-4xl lg:text-5xl font-extrabold mb-4 leading-tight text-text-light reveal">
-                            Black Friday 2025: Der ultimative Deal für die ExpressKafi Tragbare Espressomaschine
+                        <!-- H1 - WICHTIG FÜR SEO -->
+                        <h1 class="text-4xl lg:text-5xl font-extrabold mb-3 leading-tight text-text-light reveal">
+                            Black Friday: Die ExpressKafi Tragbare Espressomaschine – 40% Rabatt
                         </h1>
                         
-                        <!-- H2 - DEAL HEADLINE (Preis und Rabatt auf 40% aktualisiert) -->
+                        <!-- H2 - DEAL HEADLINE -->
                         <h2 class="text-3xl lg:text-4xl font-extrabold mb-4 leading-tight text-deal-red reveal" style="transition-delay: 50ms;">
-                            40% Black Friday Sofort-Rabatt: Nur CHF 79.00!
+                            Jetzt nur CHF 79.00 statt CHF 129.00
                         </h2>
                         
-                        <!-- Deal Badge (Black Friday Design) -->
-                        <div class="deal-badge-bf px-6 py-3 rounded-full font-bold text-xl mb-6 inline-flex items-center shadow-xl transform hover:scale-[1.03] transition-transform duration-300 reveal" style="transition-delay: 100ms;">
-                            <i class="fas fa-tag mr-3 text-deal-red"></i>
-                            <span class="uppercase tracking-wider text-text-light">Black Week: Nur für kurze Zeit!</span>
-                        </div>
-                        
-                        <!-- Preisdarstellung (Hervorgehoben Rot, Preis auf CHF 79.00 aktualisiert) -->
-                        <div class="flex items-center justify-center md:justify-start gap-6 mb-8 reveal" style="transition-delay: 150ms;">
-                            <p class="text-3xl font-semibold strikethrough-deal">
-                                CHF 129.00
-                            </p>
-                            <p class="text-6xl bf-price">
-                                CHF 79.00
-                            </p>
-                        </div>
-                        
-                        <!-- Beschreibung (Keywords: tragbare Espressomaschine, Camping, Auto) -->
-                        <p class="text-lg lg:text-xl mb-10 text-gray-300 reveal" style="transition-delay: 200ms;">
-                            Sichern Sie sich jetzt die **ExpressKafi**, die meistverkaufte **tragbare Espressomaschine** der Schweiz. Professionelle 15 Bar Druck und integrierte Heizfunktion – perfekt für **Camping**, **Auto** und jedes Abenteuer. Nur am Black Friday!
+                        <!-- Beschreibung (Keywords) -->
+                        <p class="text-lg lg:text-xl mb-6 text-gray-300 reveal" style="transition-delay: 150ms;">
+                            Ihr perfekter Espresso mit 15 Bar Druck, überall und jederzeit. Mit integrierter Heizfunktion – ideal für **Camping**, **Auto** und die Berge.
                         </p>
                         
-                        <!-- CTA Button (Black Friday Rot, Preis auf CHF 79.00 aktualisiert) -->
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start reveal" style="transition-delay: 300ms;">
-                            <a href="https://buy.stripe.com/28E28q0SraFSdKocmF3ks02" class="px-8 py-4 rounded-lg font-bold text-xl shadow-lg uppercase text-white" style="background-color: #b91c1c; border: 2px solid #991b1b;">
-                                Jetzt CHF 79.00 Deal sichern!
-                            </a>
+                        <!-- Countdown Timer (VISUELLER KAUFANREIZ) -->
+                        <div id="countdown-timer" class="bg-deal-orange p-4 rounded-xl mb-8 shadow-inner reveal" style="transition-delay: 250ms;">
+                            <p class="font-bold text-lg uppercase mb-2">Deal endet in:</p>
+                            <div class="flex justify-center md:justify-start space-x-4 font-extrabold text-3xl">
+                                <div class="text-center">
+                                    <span id="days" class="block text-4xl">00</span>
+                                    <span class="text-sm font-normal">Tage</span>
+                                </div>
+                                <div class="text-center">
+                                    <span id="hours" class="block text-4xl">00</span>
+                                    <span class="text-sm font-normal">Std</span>
+                                </div>
+                                <div class="text-center">
+                                    <span id="minutes" class="block text-4xl">00</span>
+                                    <span class="text-sm font-normal">Min</span>
+                                </div>
+                                <div class="text-center">
+                                    <span id="seconds" class="block text-4xl">00</span>
+                                    <span class="text-sm font-normal">Sek</span>
+                                </div>
+                            </div>
                         </div>
-                        
-                        <!-- Social Proof -->
-                        <div class="mt-8 flex items-center justify-center md:justify-start reveal text-gray-500" style="transition-delay: 400ms;">
-                            <i class="fas fa-star text-xl mr-3 text-deal-red"></i>
-                            <p class="text-sm font-semibold">5.000+ zufriedene Kunden in der Schweiz. Beste Qualität, bester Service.</p>
+
+                        <!-- Preis und CTA (Desktop) -->
+                        <div class="hidden md:flex flex-col gap-4 reveal" style="transition-delay: 350ms;">
+                            <p class="text-3xl font-semibold text-gray-400">
+                                Regulär: <span class="strikethrough-deal text-gray-400 mr-4">CHF 129.00</span>
+                                <span class="text-deal-red text-5xl font-extrabold">CHF 79.00</span>
+                            </p>
+                            <a href="https://buy.stripe.com/28E28q0SraFSdKocmF3ks02" class="btn-cta px-10 py-4 rounded-lg font-bold text-xl uppercase max-w-sm">
+                                Jetzt 40% Rabatt sichern!
+                            </a>
                         </div>
                     </div>
                     
-                    <!-- Produktbilder mit Deal-Rahmen (ANGESPASST) -->
-                    <div class="md:w-1/2 flex justify-center mt-8 md:mt-0">
-                        <!-- Flex Container für die Bilder -->
-                        <div class="flex flex-col items-center gap-4 lg:flex-row lg:items-end">
+                    <!-- Produktbild (Prominent) -->
+                    <div class="md:w-1/2 flex justify-center order-1 md:order-2 reveal" style="transition-delay: 100ms;">
+                        <div class="relative w-full max-w-sm">
+                            <img src="https://ae01.alicdn.com/kf/Scd9c77433c594eeba5ddd2cb30881c210.jpg" 
+                                 alt="ExpressKafi tragbare Kaffeemaschine Black Friday Deal" 
+                                 class="rounded-xl shadow-2xl w-full border-4 transition-all duration-300"
+                                 style="border-color: #b91c1c; filter: drop-shadow(0 0 15px rgba(185, 28, 28, 0.7));">
                             
-                            <!-- 1. Hauptbild (Prominent) -->
-                            <div class="relative reveal transform hover:-translate-y-1 transition-transform duration-500 w-full max-w-[320px] lg:max-w-xs" style="transition-delay: 300ms;">
-                                <img src="https://ae01.alicdn.com/kf/Scd9c77433c594eeba5ddd2cb30881c210.jpg" 
-                                     alt="ExpressKafi tragbare Kaffeemaschine mit 40% Black Friday Rabatt" 
-                                     class="rounded-xl shadow-2xl w-full border-4 transition-all duration-300"
-                                     style="border-color: #b91c1c; filter: drop-shadow(0 0 10px rgba(185, 28, 28, 0.5));"> <!-- Black Friday Fokus -->
-
-                                <div class="absolute -bottom-5 -right-5 bg-deal-red p-3 rounded-lg shadow-lg text-center hidden sm:block border-2 border-text-light">
-                                    <div class="text-white font-bold text-xl">40% RABATT!</div>
-                                    <div class="text-xs text-white/80">BLACK FRIDAY PREIS</div>
-                                </div>
+                            <!-- Deal Overlay für Bild -->
+                            <div class="absolute -top-3 -left-3 bg-deal-red p-3 rounded-full shadow-lg text-center border-4 border-text-light">
+                                <div class="text-white font-black text-xl leading-none">40%</div>
+                                <div class="text-xs text-white leading-none">DEAL</div>
                             </div>
-                            
-                            <!-- 2. Neues, sekundäres Bild (Kleiner) -->
-                            <div class="relative reveal transform hover:-translate-y-1 transition-transform duration-500 w-full max-w-[150px] lg:max-w-[200px] lg:mb-10" style="transition-delay: 400ms;">
-                                <img src="https://ae01.alicdn.com/kf/S220766c3d44e4d8bac0b42b0fdb430abv.jpg"
-                                     alt="Detailaufnahme der ExpressKafi Kaffeemaschine"
-                                     class="rounded-xl shadow-xl w-full border-2 border-accent-tan/50 transition-all duration-300">
-                            </div>
-
                         </div>
                     </div>
-                    <!-- ENDE PRODUKTBILDER -->
                 </div>
             </div>
         </section>
 
-        <!-- Features Section (Rich Brown) -->
+        <!-- Trust & Social Proof Bar (NEU, direkt unter Hero) -->
+        <section class="py-10 bg-main-dark border-b border-t border-primary-brown">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 text-center reveal">
+                    <!-- Bewertung -->
+                    <div class="flex items-center justify-center text-text-light">
+                        <i class="fas fa-star text-2xl mr-2 text-deal-red"></i>
+                        <p class="text-lg font-bold">4.9 / 5.0</p>
+                        <span class="text-sm ml-2 text-gray-400">(5.000+ Schweizer Kunden)</span>
+                    </div>
+                    <!-- Garantie -->
+                    <div class="flex items-center justify-center text-text-light">
+                        <i class="fas fa-shield-alt text-2xl mr-2 text-deal-red"></i>
+                        <p class="text-lg font-bold">2 JAHRE GARANTIE</p>
+                    </div>
+                    <!-- Versand -->
+                    <div class="flex items-center justify-center text-text-light">
+                        <i class="fas fa-truck-fast text-2xl mr-2 text-deal-red"></i>
+                        <p class="text-lg font-bold">KOSTENLOSER VERSAND</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Features Section (Rich Brown) - Fokus auf 3-in-1 und Power -->
         <section id="features" class="py-20 bg-primary-brown">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
                     <!-- H2 für Section Header -->
                     <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-light reveal">
-                        Entwickelt für Schweizer Abenteuer und höchste Ansprüche
+                        Ihre ultimative Kaffee-Freiheit: 3-in-1 Power
                     </h2>
-                    <p class="text-gray-400 max-w-2xl mx-auto reveal" style="transition-delay: 100ms;">
-                        Die wichtigsten Funktionen, die ExpressKafi zur besten tragbaren Espressomaschine auf dem Markt machen.
+                    <p class="text-gray-400 max-w-3xl mx-auto reveal" style="transition-delay: 100ms;">
+                        Wir haben die ExpressKafi für die anspruchsvollsten Schweizer Kaffeeliebhaber entwickelt – egal ob Kapsel oder Pulver, kalt oder heiss.
                     </p>
                 </div>
                 
-                <!-- Features Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Feature 1 (Inhalte unverändert, nur Design angepasst) -->
-                    <div class="feature-card text-center p-8 bg-main-dark rounded-xl shadow-xl border border-accent-tan/30 reveal">
-                        <div class="bg-accent-tan/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5 border-2 border-accent-tan">
-                            <i class="fas fa-recycle text-3xl text-accent-tan"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3 text-text-light">3-in-1 Flexibilität</h3>
-                        <p class="text-gray-400">Kompatibel mit Nespresso, Dolce Gusto und gemahlenem Kaffeepulver. Du entscheidest, wie du deinen Espresso genießt.</p>
+                <!-- Features Grid (Neu: Mehr Fokus auf die wichtigsten 3) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Feature 1: 3-in-1 Flexibilität -->
+                    <div class="text-center p-6 bg-main-dark rounded-xl shadow-xl border-t-4 border-deal-red reveal" style="transition-delay: 100ms;">
+                        <i class="fas fa-recycle text-5xl text-deal-red mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-text-light">Maximale Kompatibilität</h3>
+                        <p class="text-gray-400">Nutzen Sie Nespresso®, Dolce Gusto® Kapseln oder Ihr bevorzugtes gemahlenes Kaffeepulver. Nie wieder Kompromisse!</p>
                     </div>
                     
-                    <!-- Feature 2 -->
-                    <div class="feature-card text-center p-8 bg-main-dark rounded-xl shadow-xl border border-accent-tan/30 reveal" style="transition-delay: 100ms;">
-                         <div class="bg-accent-tan/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5 border-2 border-accent-tan">
-                            <i class="fas fa-fire-burner text-3xl text-accent-tan"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3 text-text-light">Integrierte Heizfunktion</h3>
-                        <p class="text-gray-400">Erhitze kaltes Wasser direkt in der Maschine auf perfekte Brühtemperatur. Autarkie auf höchstem Niveau, ideal für unterwegs.</p>
+                    <!-- Feature 2: Integrierte Heizfunktion -->
+                    <div class="text-center p-6 bg-main-dark rounded-xl shadow-xl border-t-4 border-deal-red reveal" style="transition-delay: 200ms;">
+                        <i class="fas fa-fire-burner text-5xl text-deal-red mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-text-light">Heiss auf Knopfdruck</h3>
+                        <p class="text-gray-400">Kein externes Heisswasser nötig. Füllen Sie kaltes Wasser ein, und die ExpressKafi erhitzt es selbstständig zur perfekten Temperatur.</p>
                     </div>
                     
-                    <!-- Feature 3 -->
-                    <div class="feature-card text-center p-8 bg-main-dark rounded-xl shadow-xl border border-accent-tan/30 reveal" style="transition-delay: 200ms;">
-                         <div class="bg-accent-tan/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5 border-2 border-accent-tan">
-                            <i class="fas fa-gauge-high text-3xl text-accent-tan"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3 text-text-light">Professioneller 15-Bar-Druck</h3>
-                        <p class="text-gray-400">Garantiert vollmundigen Geschmack und eine perfekte Crema – wie von deinem Barista des Vertrauens.</p>
-                    </div>
-
-                    <!-- Feature 4 -->
-                    <div class="feature-card text-center p-8 bg-main-dark rounded-xl shadow-xl border border-accent-tan/30 reveal" style="transition-delay: 300ms;">
-                         <div class="bg-accent-tan/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5 border-2 border-accent-tan">
-                            <i class="fas fa-car-battery text-3xl text-accent-tan"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3 text-text-light">12V & 220V Aufladung</h3>
-                        <p class="text-gray-400">Lädt im Auto über den Zigarettenanzünder oder zu Hause über die Steckdose. Maximale Flexibilität für Roadtrips und Camping.</p>
-                    </div>
-                    
-                    <!-- Feature 5 -->
-                    <div class="feature-card text-center p-8 bg-main-dark rounded-xl shadow-xl border border-accent-tan/30 reveal" style="transition-delay: 400ms;">
-                         <div class="bg-accent-tan/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5 border-2 border-accent-tan">
-                            <i class="fas fa-weight-hanging text-3xl text-accent-tan"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3 text-text-light">Kompakt und Leicht (550g)</h3>
-                        <p class="text-gray-400">Mit nur 550g und geringen Maßen passt ExpressKafi in jeden Rucksack, jede Tasche und jeden Kofferraum.</p>
-                    </div>
-                    
-                    <!-- Feature 6 -->
-                    <div class="feature-card text-center p-8 bg-main-dark rounded-xl shadow-xl border border-accent-tan/30 reveal" style="transition-delay: 500ms;">
-                         <div class="bg-accent-tan/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5 border-2 border-accent-tan">
-                            <i class="fas fa-handshake text-3xl text-accent-tan"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3 text-text-light">Schweizer Service & Garantie</h3>
-                        <p class="text-gray-400">Profitiere von 2 Jahren Garantie und unserem schnellen, zuverlässigen Kundenservice direkt aus der Schweiz.</p>
+                    <!-- Feature 3: 15-Bar-Druck -->
+                    <div class="text-center p-6 bg-main-dark rounded-xl shadow-xl border-t-4 border-deal-red reveal" style="transition-delay: 300ms;">
+                        <i class="fas fa-gauge-high text-5xl text-deal-red mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-text-light">Echte Crema, 15 Bar</h3>
+                        <p class="text-gray-400">Vergessen Sie Handpumpen. Der professionelle 15-Bar-Druck sorgt für authentischen, dicken Espresso mit perfekter Crema.</p>
                     </div>
                 </div>
-                
-                <!-- CTA im Feature-Bereich (Rot, Preis auf CHF 79.00 aktualisiert) -->
-                <div class="text-center mt-16 reveal" style="transition-delay: 600ms;">
-                    <a href="https://buy.stripe.com/28E28q0SraFSdKocmF3ks02" class="px-10 py-4 rounded-lg font-bold text-xl shadow-xl hover:shadow-2xl inline-block uppercase text-white" style="background-color: #b91c1c;">
-                        Black Friday Deal sichern: Jetzt CHF 79.00!
+
+                <!-- CTA im Feature-Bereich -->
+                <div class="text-center mt-16 reveal" style="transition-delay: 400ms;">
+                    <a href="https://buy.stripe.com/28E28q0SraFSdKocmF3ks02" class="btn-cta px-10 py-4 rounded-lg font-bold text-xl shadow-xl hover:shadow-2xl inline-block uppercase">
+                        Jetzt nur CHF 79.00 – Deal sichern!
                     </a>
                 </div>
             </div>
         </section>
         
-        <!-- How It Works Section (Main Dark) -->
+        <!-- How It Works Section (Main Dark) - Visueller Fokus auf Mobile -->
         <section id="how-it-works" class="py-20 bg-main-dark">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-12">
                     <!-- H2 für Section Header -->
                     <h2 class="text-3xl md:text-4xl font-bold text-text-light mb-4 reveal">
-                        In 3 Schritten zum Espresso (Die Funktionsweise)
+                        Kaffee in 90 Sekunden: So einfach geht's unterwegs
                     </h2>
                     <p class="text-gray-400 max-w-2xl mx-auto reveal" style="transition-delay: 100ms;">
-                        Dank der ExpressKafi ist die Zubereitung unterwegs einfacher als je zuvor.
+                        Kein kompliziertes Setup, keine Wartezeit. Espresso ist nur drei Schritte entfernt.
                     </p>
                 </div>
                 
                 <div class="flex flex-col lg:flex-row gap-12 items-center">
-                    <!-- Video Content Block -->
-                    <div class="lg:w-1/2 reveal" style="transition-delay: 200ms;">
-                         <div class="relative aspect-video rounded-xl shadow-2xl overflow-hidden border-4 border-accent-tan/20">
+                    <!-- Steps (Vereinfachte Darstellung für Mobile) -->
+                    <div class="lg:w-1/2 space-y-8 order-2 lg:order-1 reveal" style="transition-delay: 300ms;">
+                        <div class="flex items-start space-x-4 p-4 bg-primary-brown rounded-lg border-l-4 border-deal-red">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-deal-red text-white flex items-center justify-center font-bold text-lg shadow-md">1</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-text-light mb-1">Füllen & Einsetzen</h3>
+                                <p class="text-gray-300">Wasser in den Tank füllen (kalt oder heiss) und Ihre Nespresso-Kapsel oder Pulver einsetzen.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 p-4 bg-primary-brown rounded-lg border-l-4 border-deal-red">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-deal-red text-white flex items-center justify-center font-bold text-lg shadow-md">2</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-text-light mb-1">Start-Knopf</h3>
+                                <p class="text-gray-300">Lange Taste für Kaltwasser-Heizmodus (ca. 8 Min.) oder Kurztaste für Heisswasser-Modus (ca. 90 Sek.).</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 p-4 bg-primary-brown rounded-lg border-l-4 border-deal-red">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-deal-red text-white flex items-center justify-center font-bold text-lg shadow-md">3</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-text-light mb-1">Genuss mit Crema</h3>
+                                <p class="text-gray-300">Der 15-Bar-Druck sorgt für einen dichten Espresso mit perfekter Crema – bereit, wo Sie sind.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video Content Block (Visuell) -->
+                    <div class="lg:w-1/2 order-1 lg:order-2 reveal" style="transition-delay: 200ms;">
+                         <div class="relative aspect-video rounded-xl shadow-2xl overflow-hidden border-4 border-deal-red/50">
                             <!-- EINGEFÜGTER VIDEO-TAG -->
                             <video controls loop muted 
-                                   poster="https://placehold.co/800x450/3d2b1f/f5f5f5?text=EXPRESSKAFI+FUNKTIONSWEISE"
+                                   poster="https://placehold.co/800x450/3d2b1f/f5f5f5?text=EXPRESSKAFI+IN+AKTION"
                                    class="w-full h-full object-cover rounded-lg"
                                    preload="metadata"
                                    style="border: none;">
@@ -401,55 +391,6 @@
                                 Ihr Browser unterstützt das Video-Tag nicht.
                             </video>
                         </div>
-                    </div>
-                    
-                    <!-- Steps -->
-                    <div class="lg:w-1/2 space-y-8 reveal" style="transition-delay: 300ms;">
-                        <div class="flex items-start space-x-4">
-                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-deal-red text-white flex items-center justify-center font-bold text-lg shadow-md">1</div>
-                            <div>
-                                <h3 class="text-xl font-bold text-text-light mb-1">Kaffee vorbereiten</h3>
-                                <p class="text-gray-400">Kapsel oder gemahlenes Pulver in den entsprechenden Adapter legen und Wassertank füllen.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-deal-red text-white flex items-center justify-center font-bold text-lg shadow-md">2</div>
-                            <div>
-                                <h3 class="text-xl font-bold text-text-light mb-1">Brühen starten</h3>
-                                <p class="text-gray-400">Taste drücken. Die Maschine heizt und brüht den Espresso vollautomatisch mit 15 Bar Druck.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-deal-red text-white flex items-center justify-center font-bold text-lg shadow-md">3</div>
-                            <div>
-                                <h3 class="text-xl font-bold text-text-light mb-1">Perfekten Espresso genießen</h3>
-                                <p class="text-gray-400">Dein heißer Espresso mit Crema ist fertig. Genieße die Freiheit der mobilen Kaffeezubereitung.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Trust Bar Section (Deal Rot) -->
-        <section class="py-12 bg-deal-red">
-            <div class="container mx-auto px-4 text-white font-semibold text-center">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-center">
-                    <div class="flex items-center justify-center space-x-2">
-                        <i class="fas fa-truck-fast text-2xl text-main-dark"></i>
-                        <span class="text-sm sm:text-base">Kostenloser Versand CH</span>
-                    </div>
-                    <div class="flex items-center justify-center space-x-2">
-                        <i class="fas fa-undo-alt text-2xl text-main-dark"></i>
-                        <span class="text-sm sm:text-base">30 Tage Rückgaberecht</span>
-                    </div>
-                    <div class="flex items-center justify-center space-x-2">
-                        <i class="fas fa-shield-alt text-2xl text-main-dark"></i>
-                        <span class="text-sm sm:text-base">2 Jahre Garantie</span>
-                    </div>
-                    <div class="flex items-center justify-center space-x-2">
-                        <i class="fas fa-credit-card text-2xl text-main-dark"></i>
-                        <span class="text-sm sm:text-base">Sichere Zahlung</span>
                     </div>
                 </div>
             </div>
@@ -461,10 +402,10 @@
                 <div class="text-center mb-12">
                     <!-- H2 für Section Header -->
                     <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-light reveal">
-                        Häufig gestellte Fragen (FAQ) zur mobilen Kaffeemaschine
+                        Fragen & Antworten (FAQ)
                     </h2>
                     <p class="text-gray-400 max-w-2xl mx-auto reveal" style="transition-delay: 100ms;">
-                        Antworten auf die wichtigsten Fragen zur ExpressKafi Black Friday Aktion.
+                        Alle wichtigen Details zur ExpressKafi und dem Black Friday Deal.
                     </p>
                 </div>
 
@@ -477,7 +418,7 @@
                             <i class="fas fa-chevron-down faq-icon ml-4 text-deal-red"></i>
                         </button>
                         <div class="faq-answer">
-                            <p class="pb-4 text-gray-400">Dieser Sonderpreis von CHF 79.00 (ca. 40% Rabatt) ist Teil unserer Black Week Promotion und gilt bis einschliesslich Black Friday oder solange der Vorrat reicht. Aufgrund der hohen Nachfrage empfehlen wir eine schnelle Bestellung.</p>
+                            <p class="pb-4 text-gray-400">Dieser Sonderpreis von CHF 79.00 (ca. 40% Rabatt) ist Teil unserer Black Week Promotion und gilt bis einschliesslich des Endes des Countdowns oder solange der Vorrat reicht. Aufgrund der hohen Nachfrage empfehlen wir eine schnelle Bestellung.</p>
                         </div>
                     </div>
                     
@@ -495,22 +436,22 @@
                     <!-- FAQ Item 3 -->
                     <div class="border border-main-dark rounded-lg shadow-sm bg-main-dark">
                         <button class="faq-question w-full text-left p-4 flex justify-between items-center font-semibold text-text-light hover:bg-main-dark transition" onclick="toggleFaq(this)">
-                            Ist die ExpressKafi wirklich für Nespresso-Kapseln geeignet?
+                            Welche Kapseln sind kompatibel?
                             <i class="fas fa-chevron-down faq-icon ml-4 text-deal-red"></i>
                         </button>
                         <div class="faq-answer">
-                            <p class="pb-4 text-gray-400">Absolut. ExpressKafi wird mit drei Adaptern geliefert: für Nespresso-Kapseln, Dolce Gusto-Kapseln und für gemahlenes Espresso-Pulver. Sie sind komplett flexibel.</p>
+                            <p class="pb-4 text-gray-400">Absolut. ExpressKafi wird mit drei Adaptern geliefert: für **Nespresso-Kapseln**, **Dolce Gusto-Kapseln** und für gemahlenes Espresso-Pulver. Sie sind komplett flexibel.</p>
                         </div>
                     </div>
                     
                     <!-- FAQ Item 4 -->
                     <div class="border border-main-dark rounded-lg shadow-sm bg-main-dark">
                         <button class="faq-question w-full text-left p-4 flex justify-between items-center font-semibold text-text-light hover:bg-main-dark transition" onclick="toggleFaq(this)">
-                            Wie lange hält der Akku bei voller Ladung?
+                            Wie wird die ExpressKafi aufgeladen und betrieben?
                             <i class="fas fa-chevron-down faq-icon ml-4 text-deal-red"></i>
                         </button>
                         <div class="faq-answer">
-                            <p class="pb-4 text-gray-400">Mit einer vollen Ladung können Sie 2-3 Mal mit kaltem Wasser brühen (unter Verwendung der Heizung) oder 5-6 Mal mit bereits heißem Wasser brühen (ohne Heizung).</p>
+                            <p class="pb-4 text-gray-400">Die Maschine wird mit einem mitgelieferten 12V-Kabel über den Zigarettenanzünder im Auto oder über einen 220V-Adapter zu Hause aufgeladen und betrieben. Der Akku reicht für ca. 2-3 Heizvorgänge.</p>
                         </div>
                     </div>
 
@@ -520,11 +461,27 @@
         
     </main>
 
+    <!-- STICKY CTA BAR (Mobile-optimiert & immer sichtbar) -->
+    <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 bg-main-dark border-t-4 border-deal-red p-3 shadow-2xl">
+        <div class="flex justify-between items-center max-w-md mx-auto">
+            <div class="flex flex-col text-left">
+                <span class="text-sm text-gray-400 strikethrough-deal">CHF 129.00</span>
+                <span class="text-2xl font-black text-deal-red leading-none">CHF 79.00</span>
+            </div>
+            <a href="https://buy.stripe.com/28E28q0SraFSdKocmF3ks02" class="btn-cta px-4 py-3 rounded-lg font-bold text-lg uppercase text-white shadow-lg">
+                Jetzt DEAL sichern!
+            </a>
+        </div>
+    </div>
+
     <!-- Footer (Main Dark) -->
     <footer class="bg-main-dark text-gray-500 py-12 border-t border-primary-brown">
         <div class="container mx-auto px-4 text-center">
-            <a href="https://buy.stripe.com/28E28q0SraFSdKocmF3ks02" class="px-8 py-3 rounded-lg font-bold text-2xl shadow-xl hover:shadow-lg uppercase mb-8 inline-block text-white" style="background-color: #b91c1c;">
-                BLACK FRIDAY DEAL JETZT SICHERN
+            <p class="text-3xl font-extrabold mb-6 text-text-light">
+                Verpassen Sie den Black Friday nicht!
+            </p>
+            <a href="https://buy.stripe.com/28E28q0SraFSdKocmF3ks02" class="btn-cta px-8 py-3 rounded-lg font-bold text-2xl shadow-xl hover:shadow-lg uppercase mb-8 inline-block">
+                EXPRESSKAFI FÜR CHF 79.00 KAUFEN
             </a>
             <p class="mt-8 text-sm opacity-80">
                 &copy; 2025 ExpressKafi. Alle Rechte vorbehalten. | <a href="#" class="hover:text-deal-red transition">Impressum</a> | <a href="#" class="hover:text-deal-red transition">Datenschutz</a>
@@ -533,7 +490,7 @@
     </footer>
     
     <script>
-        // JS für die Reveal Animation (für bessere User Experience, was indirekt SEO hilft)
+        // JS für die Reveal Animation
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -547,18 +504,18 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         
-        // JS für die FAQ-Funktion (Accordions sind gut für SEO)
+        // JS für die FAQ-Funktion (Accordion)
         function toggleFaq(button) {
             const answer = button.nextElementSibling;
             const icon = button.querySelector('.faq-icon');
             
+            // Toggle the visibility
             if (answer.style.maxHeight) {
-                // Schliessen
                 answer.style.maxHeight = null;
                 answer.style.paddingTop = '0';
                 icon.style.transform = 'rotate(0deg)';
             } else {
-                // Alle anderen schliessen
+                // Close all other open FAQs (for cleaner look)
                 document.querySelectorAll('.faq-answer').forEach(item => {
                     item.style.maxHeight = null;
                     item.style.paddingTop = '0';
@@ -566,21 +523,55 @@
                     if(relatedIcon) relatedIcon.style.transform = 'rotate(0deg)';
                 });
                 
-                // Öffnen
+                // Open the clicked one
                 answer.style.maxHeight = answer.scrollHeight + "px";
                 answer.style.paddingTop = '1rem';
                 icon.style.transform = 'rotate(180deg)';
             }
         }
 
-        // Initiales Setzen der FAQ-Antworten auf versteckt
+        // Countdown Timer Logic
+        function startCountdown() {
+            // Setze das Zieldatum (z.B. Black Friday 2025: Letzter Freitag im November, 28.11.2025, um Mitternacht)
+            // HINWEIS: Da wir das aktuelle Jahr 2025 annehmen, ist der Black Friday der 28. November 2025.
+            const targetDate = new Date("November 28, 2025 23:59:59").getTime();
+
+            const timer = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                // Berechnung für Tage, Stunden, Minuten und Sekunden
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Aktualisiere die Elemente (mit Padding für 2 Ziffern)
+                document.getElementById("days").innerHTML = String(days).padStart(2, '0');
+                document.getElementById("hours").innerHTML = String(hours).padStart(2, '0');
+                document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
+                document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
+
+                // Wenn der Countdown abgelaufen ist
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById("countdown-timer").innerHTML = '<p class="text-xl font-bold">DEAL ABGELAUFEN!</p>';
+                }
+            }, 1000);
+        }
+
+        // Initiales Setup bei DOM-Load
         document.addEventListener('DOMContentLoaded', () => {
+             // 1. FAQ-Antworten verstecken
              document.querySelectorAll('.faq-answer').forEach(item => {
                 item.style.maxHeight = '0';
                 item.style.overflow = 'hidden';
                 item.style.transition = 'max-height 0.3s ease-out, padding-top 0.3s ease-out';
                 item.style.paddingTop = '0';
             });
+
+            // 2. Countdown starten
+            startCountdown();
         });
     </script>
 </body>
