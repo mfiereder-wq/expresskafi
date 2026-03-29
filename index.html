@@ -65,43 +65,88 @@
     }
     </script>
     
-    <!-- CSS & FONTS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- CSS & FONTS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- DISTINCTIVE TYPOGRAPHY: Playfair Display (Display) + Inter (Body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- CUSTOM TAILWIND CONFIG (BLACK FRIDAY BRAUN-SCHWARZ) --><script>
+    <!-- CUSTOM TAILWIND CONFIG (LUXURY INDUSTRIAL PALETTE) -->
+    <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'main-dark': '#0a0a0a', // Tiefes Schwarz (Premium Hintergrund)
-                        'primary-brown': '#2c1810', // Dunkles Schokoladenbraun
-                        'accent-tan': '#d4b483', // Warmes Gold (Premium Akzent)
-                        'text-light': '#f8f5f0', // Elfenbein-Weiß
-                        'premium-gold': '#d4af37', // Premium Gold (Hauptakzent)
-                        'secondary-copper': '#b87333', // Kupfer (Sekundärakzent)
+                        'obsidian': '#0a0a0a', // Tiefstes Schwarz
+                        'charcoal': '#1a1a1a', // Industrielles Grau
+                        'concrete': '#2d2d2d', // Beton-Grau
+                        'brass': '#b5a642', // Messing (Industrial)
+                        'bronze': '#cd7f32', // Bronze
+                        'patina': '#4a7c59', // Patina-Grün (Akzent)
+                        'ivory': '#f8f5f0', // Elfenbein
+                        'rust': '#8b4513', // Rost (Industrial Akzent)
                     },
                     fontFamily: {
-                        'sans': ['Inter', 'sans-serif'], // Auf Inter umgestellt
+                        'display': ['Playfair Display', 'serif'], // Luxuriöse Display-Schrift
+                        'sans': ['Inter', 'sans-serif'], // Saubere Body-Schrift
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+                        'slide-in': 'slide-in 0.8s ease-out',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: 1 },
+                            '50%': { opacity: 0.7 },
+                        },
+                        'slide-in': {
+                            '0%': { transform: 'translateX(-100%)', opacity: 0 },
+                            '100%': { transform: 'translateX(0)', opacity: 1 },
+                        }
                     }
                 }
             }
         }
     </script>
     
-    <!-- CUSTOM STYLES FÜR UX/CONVERSION --><style>
+    <!-- CUSTOM STYLES FÜR LUXURY/INDUSTRIAL DESIGN -->
+    <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1a1a1a;
-            color: #f5f5f5;
+            background-color: #0a0a0a;
+            color: #f8f5f0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(181, 166, 66, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(205, 127, 50, 0.02) 0%, transparent 50%);
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23b5a642' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: -1;
         }
         
         .hero-section {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a120a 100%);
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d2d2d 100%);
             position: relative;
             overflow: hidden;
+            border-bottom: 1px solid rgba(181, 166, 66, 0.2);
         }
         
         .hero-section::before {
@@ -111,21 +156,27 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
-                       radial-gradient(circle at 70% 80%, rgba(184, 115, 51, 0.05) 0%, transparent 50%);
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(181, 166, 66, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(205, 127, 50, 0.1) 0%, transparent 40%);
             pointer-events: none;
         }
         
-        /* Premium Button mit Gold-Gradient */
+        /* Industrial Luxury Button */
         .btn-cta {
-            background: linear-gradient(135deg, #d4af37 0%, #b87333 100%);
+            background: linear-gradient(135deg, #b5a642 0%, #cd7f32 100%);
             color: #0a0a0a;
             font-weight: 800;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 4px 20px rgba(181, 166, 66, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
             border: none;
             position: relative;
             overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
         
         .btn-cta::before {
@@ -135,58 +186,68 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.6s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.8s;
         }
         
         .btn-cta:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 
+                0 8px 30px rgba(181, 166, 66, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
         
         .btn-cta:hover::before {
             left: 100%;
         }
-
-        /* Premium Streichpreis */
-        .strikethrough-deal {
-            position: relative;
-            display: inline-block;
-            color: #888;
+        
+        .btn-cta:active {
+            transform: translateY(-1px) scale(1.01);
         }
-        .strikethrough-deal::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: -5%;
-            right: -5%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #d4af37, transparent);
-            transform: translateY(-50%) rotate(-2deg);
+
+        /* Industrial Badge */
+        .industrial-badge {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            border: 2px solid #b5a642;
+            position: relative;
+            overflow: hidden;
         }
         
-        /* Sticky CTA Bar */
+        .industrial-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #b5a642, transparent);
+        }
+        
+        /* Sticky CTA Bar - Industrial Design */
         #sticky-cta {
-            display: none; /* Default hidden, managed by JS/CSS for mobile */
+            display: none;
             z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 2px solid #b5a642;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
         }
 
-        /* Mobile CTA Bar - Nur sichtbar auf kleinen Bildschirmen */
         @media (max-width: 767px) {
             #sticky-cta {
                 display: block; 
             }
             body {
-                /* Zusätzlicher Padding am Boden, damit der Inhalt nicht vom Sticky CTA verdeckt wird */
                 padding-bottom: 5rem;
             }
         }
         
-        /* Animation (beibehalten für sanfte Übergänge) */
+        /* Luxury Reveal Animation */
         .reveal {
             opacity: 0;
-            transform: translateY(15px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                       transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .reveal.visible {
@@ -194,149 +255,324 @@
             transform: translateY(0);
         }
         
-        /* Cookie Banner Styles */
+        /* Industrial Card */
+        .industrial-card {
+            background: linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 100%);
+            border: 1px solid rgba(181, 166, 66, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .industrial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #b5a642, transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        
+        .industrial-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(181, 166, 66, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .industrial-card:hover::before {
+            opacity: 1;
+        }
+        
+        /* Cookie Banner - Industrial Style */
         #cookie-banner {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            z-index: 2000; /* Muss über allem anderen liegen */
-            display: none; /* Standardmässig versteckt, bis JS es anzeigt */
-            background-color: #1a1a1a;
-            color: #f5f5f5;
-            padding: 1rem;
-            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5);
-            border-top: 3px solid #d4af37; /* Premium Gold Akzent */
-            animation: slideIn 0.5s ease-out;
+            z-index: 2000;
+            display: none;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            color: #f8f5f0;
+            padding: 1.5rem;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+            border-top: 2px solid #b5a642;
+            animation: slideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         @keyframes slideIn {
             from { transform: translateY(100%); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
+        
+        /* Luxury Typography */
+        .display-font {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        /* Industrial Pattern Overlay */
+        .pattern-overlay {
+            position: relative;
+        }
+        
+        .pattern-overlay::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b5a642' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        /* Floating Animation for Product */
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Glow Effect */
+        .glow {
+            box-shadow: 0 0 20px rgba(181, 166, 66, 0.3);
+        }
+        
+        .glow:hover {
+            box-shadow: 0 0 30px rgba(181, 166, 66, 0.5);
+        }
     </style>
 </head>
 <body class="bg-main-dark">
-    <!-- Bild der ExpressKafi Kaffeemaschine mit Black Friday Deal Banner --><!-- Header (Vereinfacht für Mobile) --><header class="bg-main-dark shadow-xl sticky top-0 z-50 border-b border-primary-brown">
-        <nav class="container mx-auto px-4 lg:px-6 py-4">
+    <!-- Header - Luxury Industrial Design -->
+    <header class="bg-obsidian shadow-2xl sticky top-0 z-50 border-b border-brass/20 backdrop-blur-sm bg-obsidian/95">
+        <nav class="container mx-auto px-4 lg:px-8 py-5">
             <div class="flex justify-between items-center">
-                <a href="#" class="text-2xl font-extrabold text-text-light flex items-center tracking-wide">
-                    <i class="fas fa-mug-hot mr-2 text-premium-gold"></i>
-                    <span class="bg-gradient-to-r from-premium-gold to-secondary-copper bg-clip-text text-transparent">
+                <a href="#" class="text-3xl font-black text-ivory flex items-center tracking-tight">
+                    <i class="fas fa-industry mr-3 text-brass text-2xl"></i>
+                    <span class="display-font bg-gradient-to-r from-brass via-bronze to-rust bg-clip-text text-transparent">
                         ExpressKafi
                     </span>
+                    <span class="ml-2 text-xs font-mono text-brass/70 border border-brass/30 px-2 py-1 rounded">INDUSTRIAL</span>
                 </a>
                 
-                <!-- CTA im Desktop Header --><a href="https://buy.stripe.com/28E28q0SraFSdKKocmF3ks02" class="hidden md:inline-block btn-cta px-6 py-3 rounded-lg font-bold text-lg uppercase">
-                    JETZT KAUFEN
+                <!-- CTA im Desktop Header -->
+                <a href="https://buy.stripe.com/28E28q0SraFSdKKocmF3ks02" 
+                   class="hidden md:inline-block btn-cta px-8 py-3 rounded-lg font-bold text-lg uppercase tracking-wider industrial-badge">
+                    <span class="flex items-center gap-2">
+                        <i class="fas fa-bolt"></i>
+                        JETZT KAUFEN
+                        <i class="fas fa-arrow-right text-sm"></i>
+                    </span>
                 </a>
             </div>
         </nav>
     </header>
 
     <main>
-        <!-- Hero Section mit BLACK FRIDAY Deal FOKUS & Countdown --><section class="hero-section text-text-light pt-10 pb-16 sm:pt-16 sm:pb-20 overflow-hidden">
-            <div class="container mx-auto px-4">
-                <div class="flex flex-col md:flex-row items-center gap-8">
-                    <div class="md:w-1/2 text-center md:text-left order-2 md:order-1">
+        <!-- Hero Section - Luxury Industrial -->
+        <section class="hero-section text-ivory pt-16 pb-24 sm:pt-20 sm:pb-28 overflow-hidden pattern-overlay">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                    <!-- Text Content -->
+                    <div class="lg:w-1/2 text-center lg:text-left order-2 lg:order-1">
                         
-                        <!-- H1 - WICHTIG FÜR SEO --><h1 class="text-4xl lg:text-6xl font-extrabold mb-4 leading-tight reveal">
-                            <span class="text-text-light">Die tragbare </span>
-                            <span class="bg-gradient-to-r from-premium-gold to-secondary-copper bg-clip-text text-transparent">3-in-1 Espressomaschine</span>
+                        <!-- H1 - Luxury Display Typography -->
+                        <h1 class="text-5xl lg:text-7xl font-black mb-6 leading-tight reveal">
+                            <span class="text-ivory block">Die tragbare</span>
+                            <span class="display-font bg-gradient-to-r from-brass via-bronze to-patina bg-clip-text text-transparent block mt-2">
+                                3-in-1 Espressomaschine
+                            </span>
                         </h1>
                         
-                        <!-- H2 - PREMIUM HEADLINE --><h2 class="text-2xl lg:text-3xl font-semibold mb-6 text-accent-tan reveal" style="transition-delay: 50ms;">
-                            Premium Kaffeegenuss für unterwegs – 15 Bar Druck & integrierte Heizfunktion
+                        <!-- H2 - Industrial Subtitle -->
+                        <h2 class="text-2xl lg:text-3xl font-semibold mb-8 text-brass/90 reveal" style="transition-delay: 50ms;">
+                            <span class="border-b-2 border-brass/40 pb-1">Industrial Precision</span> meets <span class="border-b-2 border-bronze/40 pb-1">Swiss Luxury</span>
                         </h2>
                         
-                        <!-- Beschreibung (Keywords) --><p class="text-lg lg:text-xl mb-8 text-gray-300 reveal" style="transition-delay: 150ms;">
-                            Genießen Sie perfekten Espresso mit professioneller Crema – egal ob beim Camping, auf Reisen oder im Auto. 
-                            Die ExpressKafi kombiniert Swiss Precision mit maximaler Flexibilität.
+                        <!-- Description -->
+                        <p class="text-xl lg:text-2xl mb-10 text-concrete/80 leading-relaxed reveal" style="transition-delay: 150ms;">
+                            Professionelle Barista-Qualität für die anspruchsvollsten Kaffeeliebhaber. 
+                            Die ExpressKafi kombiniert <span class="text-brass font-semibold">industrielle Robustheit</span> mit 
+                            <span class="text-patina font-semibold">luxuriöser Präzision</span> – perfekt für Camping, Reisen und das tägliche Ritual.
                         </p>
                         
-                        <!-- Premium Feature Grid --><div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 reveal" style="transition-delay: 250ms;">
-                            <div class="text-center p-3 bg-primary-brown/50 rounded-lg border border-premium-gold/20">
-                                <div class="text-premium-gold text-2xl mb-1"><i class="fas fa-bolt"></i></div>
-                                <div class="text-sm font-semibold text-text-light">15 Bar Druck</div>
+                        <!-- Industrial Feature Grid -->
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 reveal" style="transition-delay: 250ms;">
+                            <div class="industrial-card text-center p-4 rounded-xl">
+                                <div class="text-brass text-3xl mb-2"><i class="fas fa-gauge-high"></i></div>
+                                <div class="text-sm font-bold text-ivory uppercase tracking-wider">15 Bar Druck</div>
+                                <div class="text-xs text-concrete/70 mt-1">Industrielle Power</div>
                             </div>
-                            <div class="text-center p-3 bg-primary-brown/50 rounded-lg border border-premium-gold/20">
-                                <div class="text-premium-gold text-2xl mb-1"><i class="fas fa-fire"></i></div>
-                                <div class="text-sm font-semibold text-text-light">Integrierte Heizung</div>
+                            <div class="industrial-card text-center p-4 rounded-xl">
+                                <div class="text-bronze text-3xl mb-2"><i class="fas fa-fire-burner"></i></div>
+                                <div class="text-sm font-bold text-ivory uppercase tracking-wider">Integrierte Heizung</div>
+                                <div class="text-xs text-concrete/70 mt-1">Sofortige Wärme</div>
                             </div>
-                            <div class="text-center p-3 bg-primary-brown/50 rounded-lg border border-premium-gold/20">
-                                <div class="text-premium-gold text-2xl mb-1"><i class="fas fa-battery-full"></i></div>
-                                <div class="text-sm font-semibold text-text-light">12V/220V</div>
+                            <div class="industrial-card text-center p-4 rounded-xl">
+                                <div class="text-patina text-3xl mb-2"><i class="fas fa-bolt"></i></div>
+                                <div class="text-sm font-bold text-ivory uppercase tracking-wider">12V/220V</div>
+                                <div class="text-xs text-concrete/70 mt-1">Universelle Stromversorgung</div>
                             </div>
-                            <div class="text-center p-3 bg-primary-brown/50 rounded-lg border border-premium-gold/20">
-                                <div class="text-premium-gold text-2xl mb-1"><i class="fas fa-shield-alt"></i></div>
-                                <div class="text-sm font-semibold text-text-light">2 Jahre Garantie</div>
+                            <div class="industrial-card text-center p-4 rounded-xl">
+                                <div class="text-rust text-3xl mb-2"><i class="fas fa-shield-alt"></i></div>
+                                <div class="text-sm font-bold text-ivory uppercase tracking-wider">2 Jahre Garantie</div>
+                                <div class="text-xs text-concrete/70 mt-1">Swiss Quality</div>
                             </div>
                         </div>
 
-                        <!-- Preis und CTA (Desktop) --><div class="hidden md:flex flex-col gap-6 reveal" style="transition-delay: 350ms;">
-                            <div class="flex items-baseline gap-4">
-                                <div class="text-text-light">
-                                    <div class="text-sm text-gray-400">Premium Qualität</div>
-                                    <div class="text-5xl font-extrabold bg-gradient-to-r from-premium-gold to-secondary-copper bg-clip-text text-transparent">
-                                        CHF 129.00
+                        <!-- Price & CTA (Desktop) -->
+                        <div class="hidden lg:flex flex-col gap-8 reveal" style="transition-delay: 350ms;">
+                            <div class="flex items-baseline gap-8">
+                                <div class="text-ivory">
+                                    <div class="text-sm text-concrete/60 uppercase tracking-wider">Premium Edition</div>
+                                    <div class="text-6xl font-black bg-gradient-to-r from-brass via-bronze to-rust bg-clip-text text-transparent">
+                                        CHF 129<span class="text-4xl">.00</span>
                                     </div>
                                 </div>
-                                <div class="text-text-light border-l border-premium-gold/30 pl-4">
-                                    <div class="text-sm text-gray-400">Special Offer</div>
-                                    <div class="text-4xl font-bold text-premium-gold">
-                                        CHF 99.00
+                                <div class="text-ivory border-l-2 border-brass/30 pl-8">
+                                    <div class="text-sm text-concrete/60 uppercase tracking-wider">Limited Offer</div>
+                                    <div class="text-5xl font-black text-brass glow px-4 py-2 rounded-lg">
+                                        CHF 99<span class="text-3xl">.00</span>
                                     </div>
                                 </div>
                             </div>
-                            <a href="https://buy.stripe.com/28E28q0SraFSdKocmF3ks02" class="btn-cta px-10 py-4 rounded-lg font-bold text-xl uppercase max-w-sm">
-                                JETZT KAUFEN
-                            </a>
-                            <p class="text-sm text-gray-400">
-                                <i class="fas fa-shipping-fast text-premium-gold mr-2"></i>
-                                Kostenloser Versand in der Schweiz • 30 Tage Rückgaberecht
-                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4 items-start">
+                                <a href="https://buy.stripe.com/28E28q0SraFSdKocmF3ks02" 
+                                   class="btn-cta px-12 py-5 rounded-xl font-bold text-xl uppercase tracking-wider flex-1 text-center">
+                                    <span class="flex items-center justify-center gap-3">
+                                        <i class="fas fa-industry"></i>
+                                        JETZT BESTELLEN
+                                        <i class="fas fa-arrow-right animate-pulse"></i>
+                                    </span>
+                                </a>
+                                <div class="text-sm text-concrete/70 flex items-center gap-2">
+                                    <i class="fas fa-lock text-brass"></i>
+                                    <span>Sichere Bezahlung • 30 Tage Rückgaberecht</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- Produktbild (Prominent) --><div class="md:w-1/2 flex justify-center order-1 md:order-2 reveal" style="transition-delay: 100ms;">
-                        <div class="relative w-full max-w-sm">
-                            <img src="https://i.ibb.co/qFpWwJsG/Scd9c77433c594eeba5ddd2cb30881c210-1.jpg" 
-                                 alt="ExpressKafi tragbare Kaffeemaschine Black Friday Deal" 
-                                 class="rounded-xl shadow-2xl w-full border-4 transition-all duration-300"
-                                 style="border-color: #b91c1c; filter: drop-shadow(0 0 15px rgba(185, 28, 28, 0.7));"
-                                 onerror="this.onerror=null; this.src='https://placehold.co/400x400/3d2b1f/f5f5f5?text=Bildfehler%0AURL+pruefen';"> <!-- OnError-Handler beibehalten -->
-                            
-                            <!-- Premium Badge --><div class="absolute -top-3 -right-3 bg-gradient-to-br from-premium-gold to-secondary-copper p-3 rounded-full shadow-lg text-center border-4 border-main-dark">
-                                <div class="text-main-dark font-black text-xl leading-none">PREMIUM</div>
+                    <!-- Product Image - Floating Animation -->
+                    <div class="lg:w-1/2 flex justify-center order-1 lg:order-2 reveal" style="transition-delay: 100ms;">
+                        <div class="relative w-full max-w-lg">
+                            <div class="float-animation">
+                                <img src="https://i.ibb.co/qFpWwJsG/Scd9c77433c594eeba5ddd2cb30881c210-1.jpg" 
+                                     alt="ExpressKafi tragbare Kaffeemaschine - Industrial Luxury Design" 
+                                     class="rounded-2xl shadow-2xl w-full border-4 border-brass/30 transition-all duration-500 glow"
+                                     style="filter: drop-shadow(0 0 20px rgba(181, 166, 66, 0.4));"
+                                     onerror="this.onerror=null; this.src='https://placehold.co/600x600/1a1a1a/b5a642?text=EXPRESSKAFI+INDUSTRIAL'">
                             </div>
+                            
+                            <!-- Industrial Badge -->
+                            <div class="absolute -top-4 -right-4 bg-gradient-to-br from-charcoal to-concrete p-4 rounded-full shadow-2xl text-center border-2 border-brass industrial-badge">
+                                <div class="text-brass font-black text-xl leading-none tracking-tighter">INDUSTRIAL</div>
+                                <div class="text-xs text-concrete/70 mt-1">EDITION</div>
+                            </div>
+                            
+                            <!-- Decorative Elements -->
+                            <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-brass/10 rounded-full blur-xl"></div>
+                            <div class="absolute -top-6 -right-6 w-24 h-24 bg-bronze/10 rounded-full blur-xl"></div>
                         </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile CTA -->
+                <div class="lg:hidden mt-12 reveal" style="transition-delay: 400ms;">
+                    <div class="bg-charcoal/80 backdrop-blur-sm rounded-2xl p-6 border border-brass/20">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <div class="text-sm text-concrete/60">Limited Offer</div>
+                                <div class="text-4xl font-black text-brass">CHF 99.00</div>
+                            </div>
+                            <a href="https://buy.stripe.com/28E28q0SraFSdKocmF3ks02" 
+                               class="btn-cta px-8 py-3 rounded-lg font-bold text-lg uppercase">
+                                JETZT KAUFEN
+                            </a>
+                        </div>
+                        <p class="text-sm text-concrete/70 text-center">
+                            <i class="fas fa-shipping-fast text-brass mr-2"></i>
+                            Kostenloser Versand • 30 Tage Rückgaberecht
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Trust & Social Proof Bar (NEU, direkt unter Hero) --><section class="py-10 bg-main-dark border-b border-t border-primary-brown">
+        <!-- Trust & Social Proof Bar - Industrial Design -->
+        <section class="py-12 bg-charcoal border-y border-brass/10">
             <div class="container mx-auto px-4">
-                <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 text-center reveal">
-                    <!-- Bewertung --><div class="flex items-center justify-center text-text-light">
-                        <i class="fas fa-star text-2xl mr-2 text-premium-gold"></i>
-                        <div>
-                            <p class="text-lg font-bold">4.9 / 5.0 Sterne</p>
-                            <span class="text-sm text-gray-400">(5.000+ zufriedene Kunden)</span>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center reveal">
+                    <!-- Rating -->
+                    <div class="industrial-card p-6 rounded-xl">
+                        <div class="flex items-center justify-center gap-4">
+                            <div class="text-brass text-3xl"><i class="fas fa-star"></i></div>
+                            <div class="text-left">
+                                <p class="text-2xl font-black text-ivory">4.9 / 5.0</p>
+                                <span class="text-sm text-concrete/70 block">5.000+ zufriedene Kunden</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex justify-center">
+                            <div class="flex gap-1">
+                                <i class="fas fa-star text-brass"></i>
+                                <i class="fas fa-star text-brass"></i>
+                                <i class="fas fa-star text-brass"></i>
+                                <i class="fas fa-star text-brass"></i>
+                                <i class="fas fa-star-half-alt text-brass"></i>
+                            </div>
                         </div>
                     </div>
-                    <!-- Garantie --><div class="flex items-center justify-center text-text-light">
-                        <i class="fas fa-award text-2xl mr-2 text-premium-gold"></i>
-                        <div>
-                            <p class="text-lg font-bold">Swiss Quality</p>
-                            <span class="text-sm text-gray-400">2 Jahre Garantie</span>
+                    
+                    <!-- Warranty -->
+                    <div class="industrial-card p-6 rounded-xl">
+                        <div class="flex items-center justify-center gap-4">
+                            <div class="text-bronze text-3xl"><i class="fas fa-award"></i></div>
+                            <div class="text-left">
+                                <p class="text-2xl font-black text-ivory">Swiss Quality</p>
+                                <span class="text-sm text-concrete/70 block">2 Jahre Garantie</span>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <div class="text-xs text-concrete/70 uppercase tracking-wider">Made in Switzerland</div>
                         </div>
                     </div>
-                    <!-- Versand --><div class="flex items-center justify-center text-text-light">
-                        <i class="fas fa-shipping-fast text-2xl mr-2 text-premium-gold"></i>
-                        <div>
-                            <p class="text-lg font-bold">Kostenloser Versand</p>
-                            <span class="text-sm text-gray-400">in der Schweiz</span>
+                    
+                    <!-- Shipping -->
+                    <div class="industrial-card p-6 rounded-xl">
+                        <div class="flex items-center justify-center gap-4">
+                            <div class="text-patina text-3xl"><i class="fas fa-shipping-fast"></i></div>
+                            <div class="text-left">
+                                <p class="text-2xl font-black text-ivory">Kostenloser Versand</p>
+                                <span class="text-sm text-concrete/70 block">in der Schweiz</span>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <div class="text-xs text-concrete/70">24-48h Lieferzeit</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial Quote -->
+                <div class="mt-12 text-center reveal" style="transition-delay: 200ms;">
+                    <div class="max-w-3xl mx-auto">
+                        <div class="text-brass text-4xl mb-4">"</div>
+                        <p class="text-xl italic text-concrete/80 mb-4">
+                            Die ExpressKafi hat unsere Camping-Ausflüge revolutioniert. Endlich professioneller Espresso 
+                            in der Natur – die industrielle Qualität spürt man in jeder Tasse.
+                        </p>
+                        <div class="flex items-center justify-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brass/20 flex items-center justify-center">
+                                <i class="fas fa-user text-brass"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="font-bold text-ivory">Markus B.</p>
+                                <p class="text-sm text-concrete/70">Outdoor-Enthusiast & Kaffeeliebhaber</p>
+                            </div>
                         </div>
                     </div>
                 </div>
